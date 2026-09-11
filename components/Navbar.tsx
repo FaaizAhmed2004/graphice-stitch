@@ -18,7 +18,6 @@ const NAV_ITEMS = [
     ],
   },
   { label: "Pricing",        href: "/pricing"        },
-  { label: "Sample Designs", href: "/sample-designs" },
   // { label: "Blog",           href: "/blog"           },
   { label: "About",          href: "/about"          },
   { label: "Contact",        href: "/contact"        },
@@ -62,8 +61,8 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-          <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform duration-200 ring-1 ring-gray-200 dark:ring-gray-700">
+        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-200 ring-1 ring-gray-200 dark:ring-gray-700">
             <Image
               src="/Company_Logo-01.png"
               alt={SITE_NAME}
@@ -117,8 +116,12 @@ export default function Navbar() {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3 flex-shrink-0">
+        <div className="flex items-center gap-3 shrink-0">
           <ThemeToggle />
+          <Link href="/portal/login"
+            className="hidden sm:inline-flex items-center gap-1.5 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-sm font-semibold px-4 py-2 rounded-full hover:border-gray-900 dark:hover:border-gray-300 transition-colors">
+            Client Portal
+          </Link>
           <Link href="/contact"
             className="hidden md:inline-flex items-center gap-1.5 bg-gray-900 hover:bg-gray-700 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 text-sm font-semibold px-5 py-2 rounded-full shadow hover:shadow-gray-900/20 hover:scale-105 transition-all duration-200">
             Get a Quote
@@ -148,7 +151,6 @@ export default function Navbar() {
           <div className="my-2 h-px bg-gray-100 dark:bg-gray-800" />
           {[
             { label: "Pricing",        href: "/pricing"        },
-            { label: "Sample Designs", href: "/sample-designs" },
             { label: "Blog",           href: "/blog"           },
             { label: "About",          href: "/about"          },
             { label: "Contact",        href: "/contact"        },
@@ -158,6 +160,9 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <Link href="/portal/login" className="mt-2 px-4 py-2.5 rounded-xl text-sm font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 text-center">
+            Client Portal — Login / Sign up
+          </Link>
           <Link href="/contact" className="mt-3 w-full bg-gray-900 dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-100 text-white dark:text-gray-900 font-semibold py-3 rounded-xl text-center text-sm shadow block transition-colors">
             Get a Free Quote
           </Link>

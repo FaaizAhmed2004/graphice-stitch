@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Portal backend setup
+
+The client and admin portals use Supabase Auth, Postgres, Row Level Security, and project file records.
+
+1. Create a Supabase project and copy `.env.example` to `.env.local`.
+2. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+3. Run `supabase/migrations/202609100001_portal_foundation.sql` in the Supabase SQL editor.
+4. Register a client at `/portal/login`. To create the first admin, update that user's `profiles.role` to `admin` from the Supabase SQL editor.
+5. Use `/admin` for leads, projects, and CMS administration; clients use `/portal`.
+
+Public quote submissions continue to send email and now create a `new` lead in Supabase when the environment variables are configured.
+
 ## Getting Started
 
 First, run the development server:

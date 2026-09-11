@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/emailService";
+import { getSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,6 +18,23 @@ export async function POST(req: NextRequest) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+    }
+
+    if (isSupabaseConfigured()) {
+      const supabase = await getSupabaseServerClient();
+      const { error } = await supabase.from("leads").insert({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        phone: phone?.trim() || null,
+        service: service.trim(),
+        size: size?.trim() || null,
+        notes: notes?.trim() || null,
+      });
+
+      if (error) {
+        console.error("Lead persistence error:", error);
+        return NextResponse.json({ error: "We could not save your request. Please try again." }, { status: 500 });
+      }
     }
 
     await sendContactEmail({
