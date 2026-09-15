@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 import { SITE_NAME, CONTACT_PHONE } from "@/lib/constants";
 
 const NAV_ITEMS = [
@@ -36,15 +35,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  useEffect(() => { setIsOpen(false); setOpenDropdown(null); }, [pathname]);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setIsOpen(false);
+      setOpenDropdown(null);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname]);
 
   const navBg = scrolled || !isHome
-    ? "bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800"
+    ? "bg-[#101010]/95 backdrop-blur-md border-b border-white/10"
     : "bg-transparent";
 
   const linkBase = "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-150";
-  const idle     = "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800";
-  const active   = "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 font-semibold";
+  const idle     = "text-white/60 hover:text-white hover:bg-white/10";
+  const active   = "text-white bg-white/10 font-semibold";
 
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${navBg}`}>
@@ -52,8 +57,8 @@ export default function Navbar() {
       {/* Top bar */}
       <div className="hidden md:block bg-gray-950 dark:bg-black text-gray-400 text-xs py-1.5">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <span>📞 {CONTACT_PHONE} — Professional Embroidery &amp; Vector Art</span>
-          <span className="text-gray-600">Next-Day Turnaround · Quality Guaranteed · From $15</span>
+          <span>{CONTACT_PHONE} / Embroidery + vector production</span>
+          <span className="text-white/35">Next-day turnaround / From $15</span>
         </div>
       </div>
 
@@ -73,8 +78,8 @@ export default function Navbar() {
             />
           </div>
           <div className="leading-tight">
-            <span className="text-base font-black gradient-text tracking-tight block">{SITE_NAME}</span>
-            <span className="text-[10px] text-gray-400 dark:text-gray-500 hidden sm:block">Embroidery &amp; Vector Art</span>
+            <span className="text-base font-black text-white tracking-tight block">{SITE_NAME}</span>
+            <span className="text-[10px] text-white/40 hidden sm:block">Design production studio</span>
           </div>
         </Link>
 
@@ -117,13 +122,12 @@ export default function Navbar() {
 
         {/* Right side */}
         <div className="flex items-center gap-3 shrink-0">
-          <ThemeToggle />
           <Link href="/portal/login"
-            className="hidden sm:inline-flex items-center gap-1.5 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 text-sm font-semibold px-4 py-2 rounded-full hover:border-gray-900 dark:hover:border-gray-300 transition-colors">
-            Client Portal
+            className="hidden sm:inline-flex items-center gap-1.5 border border-white/20 text-white/75 text-sm font-semibold px-4 py-2 rounded-full hover:border-white hover:text-white transition-colors">
+            Login
           </Link>
           <Link href="/contact"
-            className="hidden md:inline-flex items-center gap-1.5 bg-gray-900 hover:bg-gray-700 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-gray-900 text-sm font-semibold px-5 py-2 rounded-full shadow hover:shadow-gray-900/20 hover:scale-105 transition-all duration-200">
+            className="hidden md:inline-flex items-center gap-1.5 bg-[#d9ff53] hover:bg-white text-[#101010] text-sm font-semibold px-5 py-2 rounded-full shadow hover:scale-105 transition-all duration-200">
             Get a Quote
           </Link>
           <button onClick={() => setIsOpen(!isOpen)}
@@ -160,8 +164,8 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link href="/portal/login" className="mt-2 px-4 py-2.5 rounded-xl text-sm font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 text-center">
-            Client Portal — Login / Sign up
+          <Link href="/portal/login" className="mt-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-white/10 text-center">
+            Login / Sign up
           </Link>
           <Link href="/contact" className="mt-3 w-full bg-gray-900 dark:bg-white hover:bg-gray-700 dark:hover:bg-gray-100 text-white dark:text-gray-900 font-semibold py-3 rounded-xl text-center text-sm shadow block transition-colors">
             Get a Free Quote

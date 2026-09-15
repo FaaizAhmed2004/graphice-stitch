@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 /* ── Tailwind v4: enable dark-mode via .dark class ── */
-@variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ═══════════════════════════════════════
-   LIGHT  →  White · Silver · Gray
-   DARK   →  Charcoal · Slate · Dark Silver
+  Graphics Stitch / charcoal, graphite, acid lime
 ═══════════════════════════════════════ */
 :root {
-  --bg-primary:    #ffffff;
-  --bg-secondary:  #f8f9fa;
-  --bg-card:       #ffffff;
-  --bg-muted:      #e9ecef;
-  --text-primary:  #111827;
-  --text-secondary:#4b5563;
-  --text-muted:    #9ca3af;
-  --border:        #e5e7eb;
-  --accent:        #6b7280;
-  --accent-hover:  #374151;
-  --accent-light:  #f3f4f6;
-  --accent-text:   #1f2937;
+  --bg-primary:    #101010;
+  --bg-secondary:  #171717;
+  --bg-card:       #202020;
+  --bg-muted:      #2b2b2b;
+  --text-primary:  #f5f5f0;
+  --text-secondary:#a4a49d;
+  --text-muted:    #6e6e68;
+  --border:        #343434;
+  --accent:        #d9d9d4;
+  --accent-hover:  #ffffff;
+  --accent-light:  #2a2a2a;
+  --accent-text:   #151515;
 
   /* Silver gradient stops */
   --silver-100: #f8f9fa;
@@ -32,18 +31,18 @@
 }
 
 .dark {
-  --bg-primary:    #0f1117;
-  --bg-secondary:  #161a23;
-  --bg-card:       #1c2030;
-  --bg-muted:      #242836;
-  --text-primary:  #f1f3f5;
-  --text-secondary:#9ca3af;
-  --text-muted:    #6b7280;
-  --border:        #2d3245;
-  --accent:        #9ca3af;
-  --accent-hover:  #d1d5db;
-  --accent-light:  #1c2030;
-  --accent-text:   #e5e7eb;
+  --bg-primary:    #101010;
+  --bg-secondary:  #171717;
+  --bg-card:       #202020;
+  --bg-muted:      #2b2b2b;
+  --text-primary:  #f5f5f0;
+  --text-secondary:#a4a49d;
+  --text-muted:    #6e6e68;
+  --border:        #343434;
+  --accent:        #d9ff53;
+  --accent-hover:  #ecff9e;
+  --accent-light:  #20281a;
+  --accent-text:   #151515;
 }
 
 /* ── Reset ── */
@@ -74,9 +73,89 @@ body {
   background-clip: text;
 }
 
+/* The site is intentionally monochrome. These compatibility rules keep older
+  page utilities from reintroducing light or saturated themes. */
+.dark .bg-white,
+.dark .bg-gray-50,
+.dark .bg-gray-100 { background-color: #1b1b1b !important; }
+.dark .bg-gray-200,
+.dark .bg-gray-300 { background-color: #2a2a2a !important; }
+.dark .text-gray-900,
+.dark .text-gray-950 { color: #f5f5f0 !important; }
+.dark .text-gray-800,
+.dark .text-gray-700 { color: #d0d0cb !important; }
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 { border-color: #343434 !important; }
+
+.dark [class*="bg-purple-"],
+.dark [class*="bg-pink-"],
+.dark [class*="bg-indigo-"],
+.dark [class*="bg-violet-"],
+.dark [class*="bg-blue-"],
+.dark [class*="bg-teal-"],
+.dark [class*="bg-cyan-"],
+.dark [class*="bg-amber-"],
+.dark [class*="bg-orange-"],
+.dark [class*="bg-red-"],
+.dark [class*="bg-green-"],
+.dark [class*="bg-emerald-"],
+.dark [class*="bg-yellow-"],
+.dark [class*="bg-fuchsia-"] { background-color: #303030 !important; background-image: none !important; }
+.dark [class*="text-purple-"],
+.dark [class*="text-pink-"],
+.dark [class*="text-indigo-"],
+.dark [class*="text-violet-"],
+.dark [class*="text-blue-"],
+.dark [class*="text-teal-"],
+.dark [class*="text-cyan-"],
+.dark [class*="text-amber-"],
+.dark [class*="text-orange-"],
+.dark [class*="text-red-"],
+.dark [class*="text-green-"],
+.dark [class*="text-emerald-"],
+.dark [class*="text-yellow-"],
+.dark [class*="text-fuchsia-"] { color: #bdbdb7 !important; }
+.dark [class*="from-purple-"],
+.dark [class*="from-pink-"],
+.dark [class*="from-indigo-"],
+.dark [class*="from-violet-"],
+.dark [class*="from-blue-"],
+.dark [class*="from-teal-"],
+.dark [class*="from-cyan-"],
+.dark [class*="from-amber-"],
+.dark [class*="from-orange-"],
+.dark [class*="from-red-"],
+.dark [class*="from-green-"],
+.dark [class*="from-emerald-"],
+.dark [class*="from-yellow-"],
+.dark [class*="from-fuchsia-"],
+.dark [class*="to-purple-"],
+.dark [class*="to-pink-"],
+.dark [class*="to-indigo-"],
+.dark [class*="to-violet-"],
+.dark [class*="to-blue-"],
+.dark [class*="to-teal-"],
+.dark [class*="to-cyan-"],
+.dark [class*="to-amber-"],
+.dark [class*="to-orange-"],
+.dark [class*="to-red-"],
+.dark [class*="to-green-"],
+.dark [class*="to-emerald-"],
+.dark [class*="to-yellow-"],
+.dark [class*="to-fuchsia-"] { --tw-gradient-from: #252525 !important; --tw-gradient-to: #505050 !important; }
+.dark [class*="bg-[#d9ff53]"] { background-color: #d0d0cb !important; }
+.dark [class*="text-[#d9ff53]"] { color: #d0d0cb !important; }
+.dark [class*="border-[#d9ff53]"] { border-color: #8a8a84 !important; }
+.dark [class*="bg-[#f5f5f3]"],
+.dark [class*="bg-[#171717]"],
+.dark [class*="bg-[#242424]"] { background-color: #171717 !important; }
+.dark [class*="text-[#171717]"],
+.dark [class*="text-[#101010]"] { color: #f5f5f0 !important; }
+
 /* ── Hero: deep charcoal → silver ── */
 .hero-gradient {
-  background: linear-gradient(135deg, #0f1117 0%, #1c2030 40%, #2d3245 70%, #3d4560 100%);
+  background: #101010;
 }
 
 /* ── Silver shimmer gradient for accents ── */
@@ -97,6 +176,17 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.10);
 }
+
+.hero {
+  animation: hero-in 1s ease both;
+}
+
+@keyframes hero-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+::selection { background: #d9ff53; color: #101010; }
 .dark .card-hover:hover {
   box-shadow: 0 20px 50px rgba(0,0,0,0.45);
 }
@@ -104,8 +194,8 @@ body {
 /* ── Glass card ── */
 .glass {
   background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.14);
 }
 
@@ -172,18 +262,18 @@ body {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: #25D366;
+  background: #3a3a3a;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
   text-decoration: none;
   cursor: pointer;
 }
 .whatsapp-btn:hover {
   transform: scale(1.12);
-  box-shadow: 0 8px 32px rgba(37,211,102,0.6);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.65);
 }
 
 /* ── Scrollbar ── */

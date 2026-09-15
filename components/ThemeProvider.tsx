@@ -11,10 +11,10 @@ export default function ThemeProvider({ children }: Props) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="dark"
+      forcedTheme="dark"
       enableSystem={false}
       disableTransitionOnChange={false}
-      storageKey="graphics-stitch-theme"
     >
       {children}
     </NextThemesProvider>
