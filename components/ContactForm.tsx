@@ -142,7 +142,7 @@ export default function ContactForm() {
                   "Next-day turnaround guaranteed",
                   "Free revisions within 14 days",
                   "All file formats supported",
-                  "Bulk / B2B pricing available",
+                  "Custom patch borders and fills",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-gray-300">
                     <span className="w-4 h-4 rounded-full bg-gray-600 text-gray-300 flex items-center justify-center text-xs flex-shrink-0">✓</span>

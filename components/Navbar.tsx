@@ -13,7 +13,7 @@ const NAV_ITEMS = [
     children: [
       { label: "Embroidery Digitizing", href: "/embroidery-digitizing", emoji: "🧵" },
       { label: "Vector Art Conversion",  href: "/vector-art",            emoji: "🎨" },
-      { label: "B2B / Bulk Pricing",     href: "/b2b",                   emoji: "🏢" },
+      { label: "Patch Digitizing",       href: "/embroidery-digitizing", emoji: "🛡️" },
     ],
   },
   { label: "Pricing",        href: "/pricing"        },
@@ -67,12 +67,12 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-200 ring-1 ring-gray-200 dark:ring-gray-700">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-200 ring-1 ring-gray-200 dark:ring-gray-700">
             <Image
               src="/Company_Logo-01.png"
               alt={SITE_NAME}
-              width={100}
-              height={40}
+              fill
+              sizes="40px"
               className="w-full h-full object-contain"
               priority
             />
@@ -101,7 +101,7 @@ export default function Navbar() {
                   </button>
                   <div className={`absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 dark:border-gray-800 overflow-hidden transition-all duration-200 origin-top ${openDropdown === item.label ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"}`}>
                     {item.children.map((child) => (
-                      <Link key={child.href} href={child.href}
+                      <Link key={`${child.label}-${child.href}`} href={child.href}
                         className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${pathname === child.href ? "text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"}`}>
                         <span className="text-base">{child.emoji}</span>
                         <span className="font-medium">{child.label}</span>
@@ -145,9 +145,9 @@ export default function Navbar() {
           {[
             { label: "Embroidery Digitizing", href: "/embroidery-digitizing", },
             { label: "Vector Art Conversion",  href: "/vector-art",      },
-            { label: "B2B / Bulk Pricing",     href: "/b2b", },
+            { label: "Patch Digitizing",       href: "/embroidery-digitizing", },
           ].map((l) => (
-            <Link key={l.href} href={l.href}
+            <Link key={`${l.label}-${l.href}`} href={l.href}
               className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${pathname === l.href ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800" : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900"}`}>
               <span></span>{l.label}
             </Link>
@@ -159,7 +159,7 @@ export default function Navbar() {
             { label: "About",          href: "/about"          },
             { label: "Contact",        href: "/contact"        },
           ].map((l) => (
-            <Link key={l.href} href={l.href}
+            <Link key={`${l.label}-${l.href}`} href={l.href}
               className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${pathname === l.href ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800" : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900"}`}>
               {l.label}
             </Link>

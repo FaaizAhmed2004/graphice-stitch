@@ -51,12 +51,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0">
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0">
                 <Image
                   src="/Company_Logo-01.png"
                   alt={SITE_NAME}
-                  width={40}
-                  height={40}
+                  fill
+                  sizes="40px"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -90,7 +90,7 @@ export default function Footer() {
                 { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
                 { label: "Vector Art", href: "/vector-art" },
                 { label: "Our Pricing", href: "/pricing" },
-                { label: "B2B / Bulk", href: "/b2b" },
+                { label: "Patch Digitizing", href: "/embroidery-digitizing" },
                 { label: "Sample Designs", href: "/sample-designs" },
                 { label: "Blog / Resources", href: "/blog" },
                 { label: "About Us", href: "/about" },

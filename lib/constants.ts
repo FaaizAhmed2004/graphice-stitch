@@ -9,7 +9,7 @@ export const BUSINESS_HOURS = "Monday–Friday 9:00am–6:00pm PKT";
 export const NAV_LINKS = [
   { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
   { label: "Vector Art", href: "/vector-art" },
-  { label: "B2B", href: "/b2b" },
+  { label: "Patch Digitizing", href: "/embroidery-digitizing" },
   { label: "Pricing", href: "/pricing" },
   { label: "Free Designs", href: "/free-designs" },
   { label: "Blog", href: "/blog" },
@@ -139,9 +139,9 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
   {
-    question: "Do you offer bulk / B2B discounts?",
+    question: "Can you digitize custom patches?",
     answer:
-      "Yes! We offer flat-rate and volume pricing for businesses that need recurring digitizing. Contact us to set up a custom plan tailored to your needs.",
+      "Yes. We create clean patch files with precise borders, fills, and stitch direction for uniforms, clubs, brands, and custom merchandise.",
   },
   {
     question: "Do you offer same-day turnaround?",

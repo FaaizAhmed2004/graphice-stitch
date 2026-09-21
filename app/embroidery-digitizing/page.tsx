@@ -45,7 +45,7 @@ const FEATURES = [
   "Next-day turnaround guaranteed",
   "All major machine formats supported",
   "Free revisions within 14 days",
-  "Volume / B2B pricing available",
+  "Custom patch borders and fills",
 ];
 
 const SPECIALTIES = [

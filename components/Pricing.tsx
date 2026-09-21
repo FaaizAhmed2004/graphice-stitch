@@ -67,7 +67,7 @@ export default function Pricing() {
             <ul className="space-y-2 mb-6">
               {["Free revisions within 14 days", "Next-day turnaround", "All machine formats available"].map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <Check className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" /> {f}
+                  <Check className="w-4 h-4 text-gray-500 dark:text-gray-400 shrink-0" /> {f}
                 </li>
               ))}
             </ul>
@@ -116,7 +116,7 @@ export default function Pricing() {
             <ul className="space-y-2 mb-6">
               {["High-quality scalable files", "Screen printing ready", "Ideal for print, vinyl, laser"].map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <Check className="w-4 h-4 text-gray-500 dark:text-gray-400 flex-shrink-0" /> {f}
+                  <Check className="w-4 h-4 text-gray-500 dark:text-gray-400 shrink-0" /> {f}
                 </li>
               ))}
             </ul>
@@ -128,15 +128,15 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* B2B banner */}
+        {/* Patch service banner */}
         <div className="mt-8 max-w-4xl mx-auto bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 text-white text-center border border-gray-700">
-          <h3 className="text-lg font-black mb-2">🏢 B2B / Bulk Pricing Available</h3>
+          <h3 className="text-lg font-black mb-2">🛡️ Custom Patch Digitizing</h3>
           <p className="text-gray-400 text-sm mb-4">
             Running a high-volume embroidery business? We offer flat-rate and custom plans tailored to your needs.
           </p>
           <button onClick={() => scrollTo("#contact")}
             className="inline-flex items-center gap-2 bg-white text-gray-900 font-bold px-6 py-2.5 rounded-full hover:scale-105 transition-transform text-sm">
-            Contact for B2B Pricing <ArrowRight className="w-4 h-4" />
+              Explore Patch Digitizing <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
