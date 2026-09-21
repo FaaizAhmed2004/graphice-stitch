@@ -49,12 +49,12 @@ const FEATURES = [
 ];
 
 const SPECIALTIES = [
-  { emoji: "🎩", title: "3D Puff Embroidery", desc: "Bold foam-backed designs for caps and hats that truly stand out." },
-  { emoji: "⚡", title: "Coloreel Technology", desc: "We are trained in the latest Coloreel thread innovation software." },
-  { emoji: "🔥", title: "Complex Artwork", desc: "No project is too intricate. We thrive on complex, detailed designs." },
-  { emoji: "🎨", title: "Vector Art", desc: "Convert any raster image into clean, scalable vector line art." },
-  { emoji: "🐾", title: "Pet Portraits", desc: "Lifelike embroidery portraits of your beloved pets from photos." },
-  { emoji: "🛡️", title: "Patch Digitizing", desc: "Crisp, clean patch files for uniforms, clubs, and custom branding." },
+  { title: "3D Puff Embroidery", desc: "Bold foam-backed designs for caps and hats that truly stand out." },
+  { title: "Coloreel Technology", desc: "We are trained in the latest Coloreel thread innovation software." },
+  { title: "Complex Artwork", desc: "No project is too intricate. We thrive on complex, detailed designs." },
+  { title: "Vector Art", desc: "Convert any raster image into clean, scalable vector line art." },
+  { title: "Pet Portraits", desc: "Lifelike embroidery portraits of your beloved pets from photos." },
+  { title: "Patch Digitizing", desc: "Crisp, clean patch files for uniforms, clubs, and custom branding." },
 ];
 
 export default function EmbroideryDigitizingPage() {
@@ -251,7 +251,6 @@ export default function EmbroideryDigitizingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SPECIALTIES.map((s) => (
               <div key={s.title} className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 card-hover">
-                <div className="text-4xl mb-4">{s.emoji}</div>
                 <h3 className="font-black text-gray-900 dark:text-white text-lg mb-2">{s.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{s.desc}</p>
               </div>

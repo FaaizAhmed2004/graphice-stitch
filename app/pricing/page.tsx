@@ -39,7 +39,7 @@ export default function PricingPage() {
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
           <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
-            💰 Transparent Pricing
+            Transparent Pricing
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
             Professional Digitizing at{" "}
@@ -168,7 +168,7 @@ export default function PricingPage() {
       <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 rounded-3xl p-10 text-center text-white">
-            <h3 className="text-2xl md:text-3xl font-black mb-3">🛡️ Need a custom patch?</h3>
+            <h3 className="text-2xl md:text-3xl font-black mb-3">Need a custom patch?</h3>
             <p className="text-purple-100 mb-6 max-w-xl mx-auto">
               We build clean patch files with accurate borders, fills, and stitch direction for every garment and backing.
             </p>

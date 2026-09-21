@@ -18,7 +18,6 @@ const BLOG_POSTS = [
     date: "Jun 25, 2026",
     readTime: "6 min read",
     category: "Digitizing Tips",
-    emoji: "🤖",
     color: "from-purple-500 to-indigo-600",
   },
   {
@@ -28,7 +27,6 @@ const BLOG_POSTS = [
     date: "Feb 4, 2025",
     readTime: "5 min read",
     category: "Machine Care",
-    emoji: "🔧",
     color: "from-amber-500 to-orange-500",
   },
   {
@@ -38,7 +36,6 @@ const BLOG_POSTS = [
     date: "Feb 11, 2025",
     readTime: "7 min read",
     category: "Techniques",
-    emoji: "🎩",
     color: "from-pink-500 to-rose-600",
   },
   {
@@ -48,7 +45,6 @@ const BLOG_POSTS = [
     date: "Jan 20, 2026",
     readTime: "6 min read",
     category: "Digitizing Tips",
-    emoji: "📐",
     color: "from-teal-500 to-cyan-600",
   },
   {
@@ -58,7 +54,6 @@ const BLOG_POSTS = [
     date: "May 14, 2025",
     readTime: "8 min read",
     category: "File Formats",
-    emoji: "📁",
     color: "from-violet-500 to-purple-600",
   },
   {
@@ -68,7 +63,6 @@ const BLOG_POSTS = [
     date: "Feb 25, 2026",
     readTime: "5 min read",
     category: "Troubleshooting",
-    emoji: "🪡",
     color: "from-red-500 to-pink-600",
   },
   {
@@ -78,7 +72,6 @@ const BLOG_POSTS = [
     date: "Mar 12, 2025",
     readTime: "6 min read",
     category: "Technology",
-    emoji: "🌈",
     color: "from-fuchsia-500 to-pink-600",
   },
   {
@@ -88,7 +81,6 @@ const BLOG_POSTS = [
     date: "Jul 24, 2025",
     readTime: "7 min read",
     category: "Troubleshooting",
-    emoji: "⚙️",
     color: "from-slate-500 to-gray-600",
   },
   {
@@ -98,7 +90,6 @@ const BLOG_POSTS = [
     date: "Aug 27, 2025",
     readTime: "8 min read",
     category: "Techniques",
-    emoji: "🧱",
     color: "from-green-500 to-emerald-600",
   },
 ];
@@ -116,7 +107,7 @@ export default function BlogPage() {
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
           <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
-            📚 Sew What&apos;s New?
+            Sew What&apos;s New?
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
             The Graphics Stitch{" "}
@@ -170,7 +161,6 @@ export default function BlogPage() {
               >
                 {/* Thumbnail */}
                 <div className={`h-40 bg-gradient-to-br ${post.color} flex items-center justify-center`}>
-                  <span className="text-6xl">{post.emoji}</span>
                 </div>
 
                 <div className="p-5">

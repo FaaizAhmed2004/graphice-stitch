@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const USES = [
-  { emoji: "👕", title: "Screen Printing", desc: "Perfect scalable files for screen printing on any garment." },
-  { emoji: "✂️", title: "Vinyl Cutting", desc: "Precise paths for plotter and vinyl cutting machines." },
-  { emoji: "🔫", title: "Laser Engraving", desc: "Clean vector files optimized for laser engravers." },
-  { emoji: "🖨️", title: "Print Production", desc: "High-resolution print-ready files for any media." },
-  { emoji: "💻", title: "Digital Media", desc: "Scalable graphics for web, apps, and digital platforms." },
-  { emoji: "🎁", title: "Promotional Items", desc: "Versatile files for mugs, bags, pens, and merchandise." },
+  { title: "Screen Printing", desc: "Perfect scalable files for screen printing on any garment." },
+  { title: "Vinyl Cutting", desc: "Precise paths for plotter and vinyl cutting machines." },
+  { title: "Laser Engraving", desc: "Clean vector files optimized for laser engravers." },
+  { title: "Print Production", desc: "High-resolution print-ready files for any media." },
+  { title: "Digital Media", desc: "Scalable graphics for web, apps, and digital platforms." },
+  { title: "Promotional Items", desc: "Versatile files for mugs, bags, pens, and merchandise." },
 ];
 
 const HOW_IT_WORKS = [
@@ -56,7 +56,7 @@ export default function VectorArtPage() {
             {/* Left — text */}
             <div className="text-white">
               <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6 border border-white/20">
-                <span className="text-sm font-medium">🎨 Professional Vector Conversion</span>
+                <span className="text-sm font-medium">Professional Vector Conversion</span>
               </div>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-black leading-tight mb-6">
                 <span className="block text-white">Professional</span>
@@ -215,7 +215,6 @@ export default function VectorArtPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {USES.map((use) => (
               <div key={use.title} className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 card-hover">
-                <div className="text-3xl mb-3">{use.emoji}</div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-2">{use.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm">{use.desc}</p>
               </div>

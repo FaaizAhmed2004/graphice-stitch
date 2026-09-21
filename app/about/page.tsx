@@ -10,22 +10,22 @@ export const metadata: Metadata = {
 };
 
 const TEAM = [
-  { name: "Ahmed K.", role: "Owner — CEO", emoji: "👨‍💼", color: "from-purple-500 to-indigo-600" },
-  { name: "Sara M.", role: "Admin / Accounting", emoji: "👩‍💻", color: "from-pink-500 to-rose-600" },
-  { name: "Zara B.", role: "Director of Business Dev.", emoji: "👩‍🚀", color: "from-amber-500 to-orange-500" },
-  { name: "Nadia F.", role: "Social Media / Marketing", emoji: "📱", color: "from-teal-500 to-cyan-600" },
-  { name: "Omar A.", role: "Head Digitizer", emoji: "🎨", color: "from-violet-500 to-purple-600" },
-  { name: "Lisa D.", role: "Customer Service", emoji: "🎧", color: "from-red-500 to-pink-600" },
-  { name: "Hamza I.", role: "Digitizer", emoji: "✏️", color: "from-indigo-500 to-blue-600" },
-  { name: "Aisha J.", role: "Customer Service", emoji: "💬", color: "from-green-500 to-emerald-600" },
-  { name: "Bilal K.", role: "Digitizer", emoji: "🖊️", color: "from-fuchsia-500 to-pink-600" },
+  { name: "Ahmed K.", role: "Owner — CEO", color: "from-purple-500 to-indigo-600" },
+  { name: "Sara M.", role: "Admin / Accounting", color: "from-pink-500 to-rose-600" },
+  { name: "Zara B.", role: "Director of Business Dev.", color: "from-amber-500 to-orange-500" },
+  { name: "Nadia F.", role: "Social Media / Marketing", color: "from-teal-500 to-cyan-600" },
+  { name: "Omar A.", role: "Head Digitizer", color: "from-violet-500 to-purple-600" },
+  { name: "Lisa D.", role: "Customer Service", color: "from-red-500 to-pink-600" },
+  { name: "Hamza I.", role: "Digitizer", color: "from-indigo-500 to-blue-600" },
+  { name: "Aisha J.", role: "Customer Service", color: "from-green-500 to-emerald-600" },
+  { name: "Bilal K.", role: "Digitizer", color: "from-fuchsia-500 to-pink-600" },
 ];
 
 const VALUES = [
-  { emoji: "🎯", title: "Precision", desc: "Every stitch path is hand-crafted with attention to detail, ensuring flawless sew-out results." },
-  { emoji: "⚡", title: "Speed", desc: "Next-day turnaround on all standard orders. Same-day rush service available when you need it fast." },
-  { emoji: "🤝", title: "Partnership", desc: "We work as an extension of your team, not just a vendor. Your success is our success." },
-  { emoji: "🛡️", title: "Guarantee", desc: "100% quality guarantee on every file. Free revisions within 14 days, or a full refund." },
+  { title: "Precision", desc: "Every stitch path is hand-crafted with attention to detail, ensuring flawless sew-out results." },
+  { title: "Speed", desc: "Next-day turnaround on all standard orders. Same-day rush service available when you need it fast." },
+  { title: "Partnership", desc: "We work as an extension of your team, not just a vendor. Your success is our success." },
+  { title: "Guarantee", desc: "100% quality guarantee on every file. Free revisions within 14 days, or a full refund." },
 ];
 
 export default function AboutPage() {
@@ -39,7 +39,7 @@ export default function AboutPage() {
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
           <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
-            🧵 About Graphics Stitch
+            About Graphics Stitch
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
             Welcome to{" "}
@@ -131,7 +131,6 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map((v) => (
               <div key={v.title} className="bg-white dark:bg-gray-800 rounded-2xl p-7 border border-gray-100 dark:border-gray-700 text-center card-hover">
-                <div className="text-4xl mb-4">{v.emoji}</div>
                 <h3 className="font-black text-gray-900 dark:text-white mb-3">{v.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
               </div>
@@ -160,7 +159,7 @@ export default function AboutPage() {
             {TEAM.map((member) => (
               <div key={member.name} className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover">
                 <div className={`w-16 h-16 bg-gradient-to-br ${member.color} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg`}>
-                  {member.emoji}
+                  {member.name.slice(0, 1)}
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white text-sm">{member.name}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{member.role}</p>

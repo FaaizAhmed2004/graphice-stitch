@@ -30,7 +30,7 @@ export default function Pricing() {
           {/* ── Embroidery ── */}
           <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm">
             <div className="flex items-center gap-3 mb-7">
-              <div className="w-11 h-11 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center text-xl">🧵</div>
+              <div className="w-11 h-11 bg-gray-900 dark:bg-white rounded-xl" aria-hidden="true" />
               <h3 className="text-xl font-black text-gray-900 dark:text-white">Embroidery Digitizing</h3>
             </div>
 
@@ -81,7 +81,7 @@ export default function Pricing() {
           {/* ── Vector Art ── */}
           <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-200 dark:border-gray-800 shadow-sm">
             <div className="flex items-center gap-3 mb-7">
-              <div className="w-11 h-11 bg-gray-900 dark:bg-white rounded-xl flex items-center justify-center text-xl">🎨</div>
+              <div className="w-11 h-11 bg-gray-900 dark:bg-white rounded-xl" aria-hidden="true" />
               <h3 className="text-xl font-black text-gray-900 dark:text-white">Vector Art Conversion</h3>
             </div>
 
@@ -130,7 +130,7 @@ export default function Pricing() {
 
         {/* Patch service banner */}
         <div className="mt-8 max-w-4xl mx-auto bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 text-white text-center border border-gray-700">
-          <h3 className="text-lg font-black mb-2">🛡️ Custom Patch Digitizing</h3>
+          <h3 className="text-lg font-black mb-2">Custom Patch Digitizing</h3>
           <p className="text-gray-400 text-sm mb-4">
             Running a high-volume embroidery business? We offer flat-rate and custom plans tailored to your needs.
           </p>

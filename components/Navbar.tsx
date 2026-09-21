@@ -11,9 +11,9 @@ const NAV_ITEMS = [
   {
     label: "Services",
     children: [
-      { label: "Embroidery Digitizing", href: "/embroidery-digitizing", emoji: "🧵" },
-      { label: "Vector Art Conversion",  href: "/vector-art",            emoji: "🎨" },
-      { label: "Patch Digitizing",       href: "/embroidery-digitizing", emoji: "🛡️" },
+      { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
+      { label: "Vector Art Conversion",  href: "/vector-art" },
+      { label: "Patch Digitizing",       href: "/embroidery-digitizing" },
     ],
   },
   { label: "Pricing",        href: "/pricing"        },
@@ -103,7 +103,6 @@ export default function Navbar() {
                     {item.children.map((child) => (
                       <Link key={`${child.label}-${child.href}`} href={child.href}
                         className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${pathname === child.href ? "text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800" : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"}`}>
-                        <span className="text-base">{child.emoji}</span>
                         <span className="font-medium">{child.label}</span>
                       </Link>
                     ))}

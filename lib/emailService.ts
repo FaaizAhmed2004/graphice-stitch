@@ -71,7 +71,7 @@ export const sendContactEmail = async (data: ContactFormData) => {
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f9f9f9; padding: 24px; border-radius: 8px;">
         <div style="background: linear-gradient(135deg, #7c3aed, #db2777); padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-          <h1 style="color: white; margin: 0; font-size: 24px;">🧵 Graphics Stitch</h1>
+          <h1 style="color: white; margin: 0; font-size: 24px;">Graphics Stitch</h1>
           <p style="color: rgba(255,255,255,0.8); margin: 4px 0 0;">Professional Embroidery & Vector Art</p>
         </div>
         <div style="background: white; padding: 24px; border-radius: 0 0 8px 8px; border: 1px solid #e5e7eb;">
@@ -130,7 +130,7 @@ export const sendQuoteEmail = async (data: QuoteFormData) => {
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #7c3aed, #db2777); padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-          <h1 style="color: white; margin: 0;">🧵 Graphics Stitch</h1>
+          <h1 style="color: white; margin: 0;">Graphics Stitch</h1>
         </div>
         <div style="background: white; padding: 24px; border: 1px solid #e5e7eb; border-radius: 0 0 8px 8px;">
           <h2 style="color: #1f2937;">Hi ${data.name}, your quote request is received!</h2>

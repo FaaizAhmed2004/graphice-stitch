@@ -94,13 +94,12 @@ export default function Testimonials() {
         {/* Trust badges — unique asymmetric strip */}
         <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { emoji: "⭐", value: "5.0",  label: "Average Rating",  bg: "bg-gray-900 dark:bg-gray-800 text-white" },
-            { emoji: "👥", value: "50K+", label: "Happy Customers",  bg: "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white" },
-            { emoji: "✅", value: "100%", label: "Quality Guarantee", bg: "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white" },
-            { emoji: "🔁", value: "Free", label: "Revisions",         bg: "bg-gray-900 dark:bg-gray-800 text-white" },
+            { value: "5.0",  label: "Average Rating",  bg: "bg-gray-900 dark:bg-gray-800 text-white" },
+            { value: "50K+", label: "Happy Customers",  bg: "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white" },
+            { value: "100%", label: "Quality Guarantee", bg: "bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white" },
+            { value: "Free", label: "Revisions",         bg: "bg-gray-900 dark:bg-gray-800 text-white" },
           ].map((b) => (
             <div key={b.label} className={`flex flex-col items-center p-5 rounded-3xl ${b.bg} text-center border border-gray-200 dark:border-gray-700`}>
-              <span className="text-2xl mb-2">{b.emoji}</span>
               <span className="text-2xl font-black">{b.value}</span>
               <span className="text-xs opacity-60 mt-0.5">{b.label}</span>
             </div>

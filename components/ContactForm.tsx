@@ -139,7 +139,7 @@ export default function ContactForm() {
               <ul className="space-y-2.5">
                 {[
                   "Manual digitizing — no auto-digitizing",
-                  "Next-day turnaround guaranteed",
+                  "same day  turnaround revisions within 2 hours",
                   "Free revisions within 14 days",
                   "All file formats supported",
                   "Custom patch borders and fills",

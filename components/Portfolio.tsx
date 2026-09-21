@@ -3,22 +3,22 @@
 import { useState } from "react";
 
 const PORTFOLIO_ITEMS = [
-  { id: 1, title: "Company Logo — Left Chest", category: "Embroidery", emoji: "🧵", color: "from-gray-700 to-gray-900" },
-  { id: 2, title: "Sports Team Cap Design",    category: "3D Puff",    emoji: "🎩", color: "from-gray-500 to-gray-700" },
-  { id: 3, title: "Eagle Vector Art",          category: "Vector Art", emoji: "🦅", color: "from-gray-600 to-gray-800" },
-  { id: 4, title: "Brand Full Back Jacket",    category: "Embroidery", emoji: "🧥", color: "from-gray-800 to-gray-950" },
-  { id: 5, title: "Floral Patch Design",       category: "Patch",      emoji: "🌸", color: "from-gray-400 to-gray-600" },
-  { id: 6, title: "Tiger Vector Conversion",   category: "Vector Art", emoji: "🐯", color: "from-gray-600 to-gray-900" },
+  { id: 1, title: "Company Logo — Left Chest", category: "Embroidery", color: "from-gray-700 to-gray-900" },
+  { id: 2, title: "Sports Team Cap Design",    category: "3D Puff",    color: "from-gray-500 to-gray-700" },
+  { id: 3, title: "Eagle Vector Art",          category: "Vector Art", color: "from-gray-600 to-gray-800" },
+  { id: 4, title: "Brand Full Back Jacket",    category: "Embroidery", color: "from-gray-800 to-gray-950" },
+  { id: 5, title: "Floral Patch Design",       category: "Patch",      color: "from-gray-400 to-gray-600" },
+  { id: 6, title: "Tiger Vector Conversion",   category: "Vector Art", color: "from-gray-600 to-gray-900" },
 ];
 
 const CATEGORIES = ["All", "Embroidery", "3D Puff", "Vector Art", "Patch"];
 
 const SPECIALTIES = [
-  { emoji: "🎩", title: "3D Puff",       desc: "Foam puff for bold caps"   },
-  { emoji: "⚡", title: "Coloreel",      desc: "Latest thread tech"         },
-  { emoji: "🔥", title: "Complex Art",   desc: "No project too hard"        },
-  { emoji: "🎨", title: "Vector Art",    desc: "Scalable line art"          },
-  { emoji: "🐾", title: "Pet Portraits", desc: "Custom pet digitizing"      },
+  { title: "3D Puff",       desc: "Foam puff for bold caps"   },
+  { title: "Coloreel",      desc: "Latest thread tech"         },
+  { title: "Complex Art",   desc: "No project too hard"        },
+  { title: "Vector Art",    desc: "Scalable line art"          },
+  { title: "Pet Portraits", desc: "Custom pet digitizing"      },
 ];
 
 export default function Portfolio() {
@@ -72,7 +72,6 @@ export default function Portfolio() {
               <div className={`h-52 bg-gradient-to-br ${item.color} relative flex items-center justify-center overflow-hidden`}>
                 {/* Diagonal stripe overlay */}
                 <div className="absolute inset-0 stripe-bg opacity-40" />
-                <span className="text-6xl relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-300">{item.emoji}</span>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
               </div>
               <div className="p-5">
@@ -89,7 +88,6 @@ export default function Portfolio() {
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {SPECIALTIES.map((s) => (
             <div key={s.title} className="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center border border-gray-100 dark:border-gray-800 card-hover group">
-              <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-200">{s.emoji}</div>
               <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-1">{s.title}</h4>
               <p className="text-xs text-gray-400">{s.desc}</p>
             </div>

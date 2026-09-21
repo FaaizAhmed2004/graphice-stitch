@@ -46,7 +46,7 @@ export default function ContactPage() {
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
           <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
-            💬 Get In Touch
+            Get In Touch
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
             Have Any{" "}
