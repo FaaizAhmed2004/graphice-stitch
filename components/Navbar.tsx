@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { SITE_NAME, CONTACT_PHONE } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 
 const NAV_ITEMS = [
   {
@@ -57,7 +57,7 @@ export default function Navbar() {
       {/* Top bar */}
       <div className="hidden md:block bg-gray-950 dark:bg-black text-gray-400 text-xs py-1.5">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <span>{CONTACT_PHONE} / Embroidery + vector production</span>
+          <span> Embroidery + vector production</span>
           <span className="text-white/35">Next-day turnaround / From $15</span>
         </div>
       </div>
