@@ -19,7 +19,7 @@ export default function Hero() {
         <div className="max-w-3xl">
           <div className="fade-up inline-flex items-center gap-2 border border-white/20 bg-black/20 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70 backdrop-blur-md">
             <Sparkles className="h-3.5 w-3.5 text-[#d9ff53]" />
-            Graphics Stitch / Design production studio
+            Graphic Stitch / Design production studio
           </div>
           <h1 className="fade-up-delay-1 mt-7 max-w-4xl text-5xl font-black leading-[.94] tracking-[-.04em] sm:text-7xl lg:text-[7.5rem]">
             Built to be<br /><span className="text-[#d9ff53]">seen.</span>

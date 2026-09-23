@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import { CheckCircle, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us — Graphics Stitch",
+  title: "About Us — Graphic Stitch",
   description:
     "Learn about Graphics Stitch — professional embroidery digitizing and vector art services. 15+ years of experience. Expert in-house team. Worldwide clients.",
 };

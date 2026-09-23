@@ -6,7 +6,7 @@ import Testimonials from "@/components/Testimonials";
 import { CheckCircle, Upload, Settings, Download, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Vector Art Conversion Services — Graphics Stitch",
+  title: "Vector Art Conversion Services — Graphic Stitch",
   description:
     "Professional vector art conversion starting at $15. We convert any image to AI, EPS, SVG, PDF, PNG. Perfect for screen printing, vinyl, laser cutting and more.",
 };
@@ -76,7 +76,7 @@ export default function VectorArtPage() {
               </div>
               <p className="text-gray-500 text-sm">
                 Starting at just{" "}
-                <span className="text-white font-black text-2xl">$15</span>
+                <span className="text-white font-black text-2xl">$10</span>
               </p>
             </div>
 
@@ -262,7 +262,7 @@ export default function VectorArtPage() {
           <div className="grid sm:grid-cols-2 gap-6 mb-6">
             {[
               { name: "Simple Artwork", price: "$15", desc: "Clean logos, basic shapes, 1-3 colors" },
-              { name: "Complex Artwork", price: "$20", desc: "Detailed illustrations, gradients, many colors", popular: true },
+              { name: "Complex Artwork", price: "$25", desc: "Detailed illustrations, gradients, many colors", popular: true },
             ].map((p) => (
               <div key={p.name} className={`rounded-2xl p-8 text-center border ${(p as { popular?: boolean }).popular ? "bg-gradient-to-br from-pink-600 to-rose-600 text-white border-transparent shadow-xl" : "bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700"}`}>
                 {(p as { popular?: boolean }).popular && <span className="text-xs font-bold bg-white/20 px-3 py-1 rounded-full block mb-3">Most Common</span>}

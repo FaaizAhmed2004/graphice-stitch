@@ -5,7 +5,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Check, ArrowRight, Clock, RefreshCw, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Pricing — Graphics Stitch",
+  title: "Pricing — Graphic Stitch",
   description:
     "Transparent pricing for embroidery digitizing and vector art. Left chest from $15, 3D Puff from $25, Full Back from $65. No hidden fees.",
 };

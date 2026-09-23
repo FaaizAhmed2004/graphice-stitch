@@ -1,15 +1,14 @@
-export const SITE_NAME = "Graphics Stitch";
+export const SITE_NAME = "Graphic Stitch";
 export const SITE_TAGLINE = "Professional Embroidery Digitizing & Vector Art";
 export const WHATSAPP_NUMBER = "923001234567"; // Replace with your WhatsApp number
 export const CONTACT_EMAIL = "info@graphicsstitch.com";
-export const CONTACT_PHONE = "+1 (800) 123-4567";
-export const CONTACT_PHONE_INTL = "+92-300-1234567";
-export const BUSINESS_HOURS = "Monday–Friday 9:00am–6:00pm PKT";
+export const CONTACT_LOCATION = "California, USA";
+export const BUSINESS_HOURS = "Monday–Friday 9:00am–6:00pm PT";
 
 export const NAV_LINKS = [
   { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
   { label: "Vector Art", href: "/vector-art" },
-  { label: "Patch Digitizing", href: "/embroidery-digitizing" },
+  { label: "Patch Digitizing", href: "/patch-digitizing" },
   { label: "Pricing", href: "/pricing" },
   { label: "Free Designs", href: "/free-designs" },
   { label: "Blog", href: "/blog" },
@@ -171,12 +170,12 @@ export const FAQS = [
 ];
 
 export const PORTFOLIO_ITEMS = [
-  { id: 1, title: "Company Logo — Left Chest", category: "Embroidery", color: "from-purple-500 to-indigo-600" },
-  { id: 2, title: "Sports Team Cap Design", category: "3D Puff", color: "from-pink-500 to-rose-600" },
-  { id: 3, title: "Eagle Vector Art", category: "Vector Art", color: "from-amber-500 to-orange-600" },
-  { id: 4, title: "Brand Full Back Jacket", category: "Embroidery", color: "from-teal-500 to-cyan-600" },
-  { id: 5, title: "Floral Patch Design", category: "Patch", color: "from-violet-500 to-purple-600" },
-  { id: 6, title: "Tiger Vector Conversion", category: "Vector Art", color: "from-red-500 to-pink-600" },
+  { id: 1, title: "Company Logo — Left Chest", category: "Embroidery", image: "/Left chest TEDDEY.JPG" },
+  { id: 2, title: "Sports Team Cap Design", category: "3D Puff", image: "/RAIDERS hat.JPG" },
+  { id: 3, title: "Eagle Vector Art", category: "Vector Art", image: "/Dallas Cowboys Vector Art.png" },
+  { id: 4, title: "Brand Full Back Jacket", category: "Embroidery", image: "/MARATHON JB sweatshirts.JPG" },
+  { id: 5, title: "Floral Patch Design", category: "Patch", image: "/Vintage_Cutting.jpg" },
+  { id: 6, title: "Tiger Vector Conversion", category: "Vector Art", image: "/vector.jpg" },
 ];
 
 export const STATS = [

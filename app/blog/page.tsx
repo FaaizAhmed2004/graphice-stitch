@@ -110,7 +110,7 @@ export default function BlogPage() {
             Sew What&apos;s New?
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
-            The Graphics Stitch{" "}
+            The Graphic Stitch{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300">
               Learning Blog
             </span>

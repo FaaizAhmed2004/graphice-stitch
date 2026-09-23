@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import {
   SITE_NAME,
   CONTACT_EMAIL,
-  CONTACT_PHONE,
+  CONTACT_LOCATION,
   BUSINESS_HOURS,
   WHATSAPP_NUMBER,
 } from "@/lib/constants";
@@ -143,11 +143,9 @@ export default function Footer() {
                   <span className="text-sm text-gray-500 group-hover:text-white transition-colors break-all">{CONTACT_EMAIL}</span>
                 </a>
               </li>
-              <li>
-                <a href={`tel:${CONTACT_PHONE}`} className="flex items-start gap-3 group">
-                  <Phone className="w-4 h-4 text-gray-300 mt-0.5 shrink-0" />
-                  <span className="text-sm text-gray-500 group-hover:text-white transition-colors">{CONTACT_PHONE}</span>
-                </a>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-gray-300 mt-0.5 shrink-0" />
+                <span className="text-sm text-gray-500">{CONTACT_LOCATION}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-gray-300 mt-0.5 shrink-0" />

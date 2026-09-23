@@ -1,15 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-const PORTFOLIO_ITEMS = [
-  { id: 1, title: "Company Logo — Left Chest", category: "Embroidery", color: "from-gray-700 to-gray-900" },
-  { id: 2, title: "Sports Team Cap Design",    category: "3D Puff",    color: "from-gray-500 to-gray-700" },
-  { id: 3, title: "Eagle Vector Art",          category: "Vector Art", color: "from-gray-600 to-gray-800" },
-  { id: 4, title: "Brand Full Back Jacket",    category: "Embroidery", color: "from-gray-800 to-gray-950" },
-  { id: 5, title: "Floral Patch Design",       category: "Patch",      color: "from-gray-400 to-gray-600" },
-  { id: 6, title: "Tiger Vector Conversion",   category: "Vector Art", color: "from-gray-600 to-gray-900" },
-];
+import Image from "next/image";
+import { PORTFOLIO_ITEMS } from "@/lib/constants";
 
 const CATEGORIES = ["All", "Embroidery", "3D Puff", "Vector Art", "Patch"];
 
@@ -28,19 +21,19 @@ export default function Portfolio() {
     active === "All" ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter((i) => i.category === active);
 
   return (
-    <section id="portfolio" className="py-28 bg-gray-50 dark:bg-gray-950">
+    <section id="portfolio" className="bg-[#101010] py-28 text-white">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="inline-block bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest border border-gray-200 dark:border-gray-700">
+          <span className="inline-block rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white/65 mb-4">
             Our Work
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+          <h2 className="mb-4 text-4xl font-black text-white md:text-5xl">
             Take a Tour &amp;{" "}
             <span className="gradient-text">Get Inspired</span>
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+          <p className="mx-auto max-w-xl text-white/55">
             Every design is hand-crafted by our expert digitizers.
           </p>
         </div>
@@ -53,8 +46,8 @@ export default function Portfolio() {
               onClick={() => setActive(cat)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 border ${
                 active === cat
-                  ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900 border-transparent shadow"
-                  : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500"
+                  ? "bg-[#d9ff53] text-[#171717] border-transparent shadow"
+                  : "bg-white/5 text-white/60 border-white/15 hover:border-[#d9ff53] hover:text-white"
               }`}
             >
               {cat}
@@ -67,18 +60,18 @@ export default function Portfolio() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-800 card-hover cursor-pointer"
+              className="group cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-[#202020] card-hover"
             >
-              <div className={`h-52 bg-gradient-to-br ${item.color} relative flex items-center justify-center overflow-hidden`}>
-                {/* Diagonal stripe overlay */}
-                <div className="absolute inset-0 stripe-bg opacity-40" />
+              <div className="relative flex h-52 items-center justify-center overflow-hidden bg-[#242424]">
+                <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
               </div>
               <div className="p-5">
-                <span className="inline-block text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2.5 py-1 rounded-full mb-2">
+                <span className="mb-2 inline-block rounded-full bg-[#d9ff53]/15 px-2.5 py-1 text-xs font-semibold text-[#d9ff53]">
                   {item.category}
                 </span>
-                <h3 className="font-bold text-gray-900 dark:text-white text-sm">{item.title}</h3>
+                <h3 className="text-sm font-bold text-white">{item.title}</h3>
               </div>
             </div>
           ))}
@@ -87,9 +80,9 @@ export default function Portfolio() {
         {/* Specialties strip */}
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {SPECIALTIES.map((s) => (
-            <div key={s.title} className="bg-white dark:bg-gray-900 rounded-2xl p-5 text-center border border-gray-100 dark:border-gray-800 card-hover group">
-              <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-1">{s.title}</h4>
-              <p className="text-xs text-gray-400">{s.desc}</p>
+            <div key={s.title} className="group rounded-2xl border border-white/10 bg-[#202020] p-5 text-center card-hover">
+              <h4 className="mb-1 text-sm font-bold text-white">{s.title}</h4>
+              <p className="text-xs text-white/45">{s.desc}</p>
             </div>
           ))}
         </div>

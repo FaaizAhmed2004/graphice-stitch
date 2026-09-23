@@ -3,7 +3,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const staticRoutes = ["", "/embroidery-digitizing", "/vector-art", "/pricing", "/sample-designs", "/blog", "/about", "/contact", "/quote"].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date() }));
+  const staticRoutes = ["", "/embroidery-digitizing", "/patch-digitizing", "/vector-art", "/pricing", "/sample-designs", "/blog", "/about", "/contact", "/quote"].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date() }));
   try {
     const supabase = await getSupabaseServerClient();
     const [{ data: services }, { data: posts }, { data: portfolio }] = await Promise.all([

@@ -3,11 +3,11 @@ import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import { Mail, Phone, Clock, MessageSquare, ChevronDown } from "lucide-react";
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_INTL, BUSINESS_HOURS, WHATSAPP_NUMBER } from "@/lib/constants";
+import { Mail, MapPin, Clock, MessageSquare, ChevronDown } from "lucide-react";
+import { CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS, WHATSAPP_NUMBER } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Graphics Stitch",
+  title: "Contact Us — Graphic Stitch",
   description:
     "Get in touch with Graphics Stitch. Call, email, or WhatsApp us for embroidery digitizing quotes, questions, and change requests.",
 };
@@ -66,18 +66,11 @@ export default function ContactPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                icon: <Phone className="w-6 h-6" />,
-                label: "Sales & Support",
-                value: CONTACT_PHONE,
-                href: `tel:${CONTACT_PHONE}`,
-                color: "from-purple-600 to-indigo-700",
-              },
-              {
-                icon: <Phone className="w-6 h-6" />,
-                label: "International",
-                value: CONTACT_PHONE_INTL,
-                href: `tel:${CONTACT_PHONE_INTL}`,
-                color: "from-pink-600 to-rose-600",
+                icon: <MapPin className="w-6 h-6" />,
+                label: "Based In",
+                value: CONTACT_LOCATION,
+                href: "#location",
+                color: "from-gray-700 to-gray-900",
               },
               {
                 icon: <Mail className="w-6 h-6" />,

@@ -1,22 +1,16 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 
 export default function PortalLoginPage() {
   const router = useRouter();
-  const [nextPath, setNextPath] = useState("/portal");
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [form, setForm] = useState({ name: "", company: "", email: "", password: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const next = new URLSearchParams(window.location.search).get("next");
-    if (next?.startsWith("/")) setNextPath(next);
-  }, []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,7 +27,8 @@ export default function PortalLoginPage() {
       return setMessage(authMessage);
     }
     if (mode === "signup" && result.needsEmailConfirmation) return setMessage("Check your email to confirm your account, then sign in.");
-    router.push(nextPath);
+    const next = new URLSearchParams(window.location.search).get("next");
+    router.push(next?.startsWith("/") ? next : "/portal");
     router.refresh();
   }
 

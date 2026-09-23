@@ -6,16 +6,16 @@ import FAQ from "@/components/FAQ";
 import { CheckCircle, Clock, Star, ArrowRight, Upload, Settings, Download } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Embroidery Digitizing Services — Graphics Stitch",
+  title: "Embroidery Digitizing Services — Graphic Stitch",
   description:
     "Professional embroidery digitizing starting at $15. Manual digitizing by expert artists. DST, PES, EMB, XXX formats. Next-day turnaround with quality guarantee.",
 };
 
 const PRICING = [
-  { name: "Left Chest", price: "$15", note: "With artwork ready for embroidery", popular: false },
-  { name: "Left Chest + Cap", price: "$20", note: "With artwork ready for embroidery", popular: true },
-  { name: "3D Puff", price: "$25", note: "Foam puff technique", popular: false },
-  { name: "Full Back", price: "$65", note: "Large scale designs", popular: false },
+  { name: "Left Chest", price: "$10", note: "With artwork ready for embroidery", popular: false },
+  { name: " Cap Design", price: "$10", note: "With artwork ready for embroidery", popular: true },
+  { name: "3D Puff", price: "$10", note: "Foam puff technique", popular: false },
+  { name: "JacketBack Digitizing", price: "$20-30", note: "Large scale designs", popular: false },
 ];
 
 const HOW_IT_WORKS = [
@@ -44,7 +44,7 @@ const FEATURES = [
   "Manual digitizing — no auto-digitizing software",
   "Next-day turnaround guaranteed",
   "All major machine formats supported",
-  "Free revisions within 14 days",
+  // "Free revisions within 14 days",
   "Custom patch borders and fills",
 ];
 
@@ -90,7 +90,7 @@ export default function EmbroideryDigitizingPage() {
           </div>
           <p className="mt-8 text-purple-200">
             Prices starting at just{" "}
-            <span className="text-white font-black text-2xl">$15</span>
+            <span className="text-white font-black text-2xl">$10</span>
           </p>
         </div>
       </section>
@@ -105,7 +105,7 @@ export default function EmbroideryDigitizingPage() {
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6">
                 Prices start at just{" "}
-                <span className="gradient-text">$15</span>
+                <span className="gradient-text">$10</span>
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
                 Here is what sets us apart from the competition. We combine in-house expertise

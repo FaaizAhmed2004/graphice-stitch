@@ -13,7 +13,7 @@ const NAV_ITEMS = [
     children: [
       { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
       { label: "Vector Art Conversion",  href: "/vector-art" },
-      { label: "Patch Digitizing",       href: "/embroidery-digitizing" },
+      { label: "Patch Digitizing",       href: "/patch-digitizing" },
     ],
   },
   { label: "Pricing",        href: "/pricing"        },
@@ -144,7 +144,7 @@ export default function Navbar() {
           {[
             { label: "Embroidery Digitizing", href: "/embroidery-digitizing", },
             { label: "Vector Art Conversion",  href: "/vector-art",      },
-            { label: "Patch Digitizing",       href: "/embroidery-digitizing", },
+            { label: "Patch Digitizing",       href: "/patch-digitizing", },
           ].map((l) => (
             <Link key={`${l.label}-${l.href}`} href={l.href}
               className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${pathname === l.href ? "text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800" : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900"}`}>

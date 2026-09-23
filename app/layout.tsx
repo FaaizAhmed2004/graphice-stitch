@@ -12,7 +12,7 @@ const inter = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "Graphics Stitch — Professional Embroidery Digitizing & Vector Art",
+  title: "Graphic Stitch — Professional Embroidery Digitizing & Vector Art",
   description:
     "High-quality embroidery digitizing and vector art services. Next-day turnaround, manual digitizing by expert artists. Starting at just $15.",
   keywords:
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     apple: "/Company_Logo-01.png",
   },
   openGraph: {
-    title: "Graphics Stitch — Professional Embroidery Digitizing & Vector Art",
+    title: "Graphic Stitch — Professional Embroidery Digitizing & Vector Art",
     description:
       "Expert embroidery digitizing and vector art. Manual digitizing, next-day turnaround, starting at $15.",
     type: "website",

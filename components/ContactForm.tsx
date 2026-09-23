@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle, Loader2, Mail, Phone, Clock, MessageSquare } from "lucide-react";
+import { Send, CheckCircle, Loader2, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
 import toast from "react-hot-toast";
-import { CONTACT_EMAIL, CONTACT_PHONE, BUSINESS_HOURS, WHATSAPP_NUMBER } from "@/lib/constants";
+import { CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS, WHATSAPP_NUMBER } from "@/lib/constants";
 
 interface FormState {
   name: string;
@@ -102,15 +102,15 @@ export default function ContactForm() {
                   </div>
                 </a>
 
-                <a href={`tel:${CONTACT_PHONE}`} className="flex items-center gap-3 group">
+                <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
-                    <Phone className="w-5 h-5" />
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500">Phone / WhatsApp</p>
-                    <p className="font-semibold text-sm">{CONTACT_PHONE}</p>
+                    <p className="text-xs text-gray-500">Location</p>
+                    <p className="font-semibold text-sm">{CONTACT_LOCATION}</p>
                   </div>
-                </a>
+                </div>
 
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
