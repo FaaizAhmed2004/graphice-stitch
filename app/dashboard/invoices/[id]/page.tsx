@@ -1,0 +1,17 @@
+import { notFound, redirect } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft, Download, CreditCard } from "lucide-react";
+import { getSupabaseServerClient } from "@/lib/supabase/server";
+
+export default async function InvoicePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const supabase = await getSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect("/portal/login");
+  const [{ data: invoice }, { data: items }] = await Promise.all([
+    supabase.from("invoices").select("id, invoice_number, order_id, status, currency, subtotal, discount, tax, total, due_date, notes, created_at").eq("id", id).eq("client_id", user.id).single(),
+    supabase.from("invoice_items").select("id, description, quantity, unit_price").eq("invoice_id", id),
+  ]);
+  if (!invoice) notFound();
+  return <main className="min-h-screen bg-[#f3f2ee] text-[#171717]"><header className="border-b border-black/10 bg-[#171717] text-white"><div className="mx-auto max-w-4xl px-5 py-5"><Link href="/dashboard/invoices" className="inline-flex items-center gap-2 text-sm font-bold text-white/70 hover:text-white"><ArrowLeft className="h-4 w-4" /> All invoices</Link></div></header><div className="mx-auto max-w-4xl px-5 py-10"><div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-black/45">{invoice.invoice_number}</p><h1 className="mt-2 text-4xl font-black">Invoice</h1></div><span className="rounded-full bg-[#171717] px-4 py-2 text-xs font-bold capitalize text-white">{invoice.status}</span></div><section className="mt-8 rounded-2xl border border-black/10 bg-white p-6 sm:p-8"><div className="flex items-center justify-between border-b border-black/10 pb-5"><div><p className="text-sm font-bold">Graphics Stitch</p><p className="mt-1 text-xs text-black/50">Issued {new Date(invoice.created_at).toLocaleDateString()}</p></div><button className="inline-flex items-center gap-2 rounded-xl border border-black/10 px-3 py-2 text-xs font-bold"><Download className="h-4 w-4" /> Download</button></div><div className="mt-6 space-y-3">{items?.map((item) => <div key={item.id} className="flex justify-between gap-4 rounded-xl bg-[#f8f7f4] px-4 py-3 text-sm"><span>{item.description} <small className="text-black/45">x{item.quantity}</small></span><strong>{invoice.currency} {(item.quantity * item.unit_price).toFixed(2)}</strong></div>)}</div><dl className="ml-auto mt-8 max-w-xs space-y-3 text-sm"><div className="flex justify-between"><dt className="text-black/50">Subtotal</dt><dd>{invoice.currency} {invoice.subtotal}</dd></div><div className="flex justify-between"><dt className="text-black/50">Discount</dt><dd>- {invoice.currency} {invoice.discount}</dd></div><div className="flex justify-between"><dt className="text-black/50">Tax</dt><dd>{invoice.currency} {invoice.tax}</dd></div><div className="flex justify-between border-t border-black/10 pt-3 text-lg font-black"><dt>Total</dt><dd>{invoice.currency} {invoice.total}</dd></div></dl>{invoice.status !== "paid" && <button className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#171717] px-4 py-3 text-sm font-bold text-white"><CreditCard className="h-4 w-4" /> Payment options</button>}{invoice.notes && <p className="mt-6 border-t border-black/10 pt-5 text-sm text-black/60">{invoice.notes}</p>}</section></div></main>;
+}

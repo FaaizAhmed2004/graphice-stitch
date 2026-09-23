@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
+import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Check, ArrowRight, Clock, RefreshCw, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -28,26 +29,52 @@ const WHY_US = [
   { icon: <Check className="w-5 h-5" />, title: "All Formats Included", desc: "Get your file in every format — no extra charge." },
 ];
 
-export default function PricingPage() {
+function readManagedPricing(body: string | undefined) {
+  if (!body) return null;
+  const rows = body.split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
+    const [group, name, price, note, popular] = line.split("|").map((part) => part.trim());
+    return { group, name, price, note, popular: popular === "true" };
+  }).filter((row) => row.group && row.name && row.price && row.note);
+  if (!rows.length) return null;
+  return {
+    embroidery: rows.filter((row) => row.group.toLowerCase() === "embroidery"),
+    vector: rows.filter((row) => row.group.toLowerCase() === "vector"),
+  };
+}
+
+export default async function PricingPage() {
+  const supabase = await getSupabaseServerClient();
+  const [{ data: managedPage }, { data: plans }, { data: services }] = await Promise.all([
+    supabase.from("cms_pages").select("title, content, published").eq("slug", "pricing").eq("published", true).maybeSingle(),
+    supabase.from("pricing_plans").select("name, price, description, featured, service_id").eq("active", true).order("sort_order"),
+    supabase.from("services").select("id, category").eq("published", true),
+  ]);
+  const managedPricing = readManagedPricing(managedPage?.content?.body);
+  const serviceCategories = new Map((services || []).map((service) => [service.id, service.category]));
+  const databasePricing = (plans || []).map((plan) => ({ name: plan.name, price: `$${plan.price}`, note: plan.description || "Professional production service", popular: plan.featured, category: serviceCategories.get(plan.service_id || "") }));
+  const embroideryPricing = databasePricing.filter((item) => item.category === "embroidery").map((item) => ({ name: item.name, price: item.price, note: item.note, popular: item.popular }));
+  const vectorPricing = databasePricing.filter((item) => item.category === "vector").map((item) => ({ name: item.name, price: item.price, note: item.note, popular: item.popular }));
+  const finalEmbroideryPricing = embroideryPricing.length ? embroideryPricing : managedPricing?.embroidery.length ? managedPricing.embroidery : EMBROIDERY_PRICING;
+  const finalVectorPricing = vectorPricing.length ? vectorPricing : managedPricing?.vector.length ? managedPricing.vector : VECTOR_PRICING;
   return (
     <PageLayout>
       {/* Hero */}
       <section className="relative hero-gradient py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl" />
+          <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-[#d9ff53]/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-white/10 blur-3xl" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
-          <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
+            <span className="inline-block rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium mb-6">
             Transparent Pricing
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
             Professional Digitizing at{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300">
+            <span className="text-[#d9ff53]">
               Affordable Prices
             </span>
           </h1>
-          <p className="text-purple-100 text-lg max-w-xl mx-auto">
+          <p className="text-white/65 text-lg max-w-xl mx-auto">
             High quality. Low cost. No hidden fees. We can meet your budget
             at $15 per design or go more elaborate — your choice.
           </p>
@@ -70,12 +97,12 @@ export default function PricingPage() {
               <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Fast Next-Day Service Turnaround</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-              {EMBROIDERY_PRICING.map((item) => (
+              {finalEmbroideryPricing.map((item) => (
                 <div
                   key={item.name}
                   className={`relative rounded-2xl p-7 text-center border transition-all ${
                     item.popular
-                      ? "bg-gradient-to-br from-purple-600 to-indigo-700 text-white border-transparent shadow-2xl shadow-purple-500/30 scale-105"
+                      ? "bg-[#171717] text-white border-[#d9ff53] shadow-2xl shadow-black/20 scale-105"
                       : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
                   }`}
                 >
@@ -120,12 +147,12 @@ export default function PricingPage() {
               </h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-              {VECTOR_PRICING.map((item) => (
+              {finalVectorPricing.map((item) => (
                 <div
                   key={item.name}
                   className={`rounded-2xl p-8 text-center border ${
                     item.popular
-                      ? "bg-gradient-to-br from-pink-600 to-rose-600 text-white border-transparent shadow-xl shadow-pink-500/30"
+                      ? "bg-[#171717] text-white border-[#d9ff53] shadow-xl shadow-black/20"
                       : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
                   }`}
                 >
@@ -167,7 +194,7 @@ export default function PricingPage() {
       {/* Patch service banner */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-purple-700 via-purple-600 to-pink-600 rounded-3xl p-10 text-center text-white">
+          <div className="rounded-3xl bg-[#171717] p-10 text-center text-white">
             <h3 className="text-2xl md:text-3xl font-black mb-3">Need a custom patch?</h3>
             <p className="text-purple-100 mb-6 max-w-xl mx-auto">
               We build clean patch files with accurate borders, fills, and stitch direction for every garment and backing.

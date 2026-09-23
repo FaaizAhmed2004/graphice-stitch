@@ -73,86 +73,6 @@ body {
   background-clip: text;
 }
 
-/* The site is intentionally monochrome. These compatibility rules keep older
-  page utilities from reintroducing light or saturated themes. */
-.dark .bg-white,
-.dark .bg-gray-50,
-.dark .bg-gray-100 { background-color: #1b1b1b !important; }
-.dark .bg-gray-200,
-.dark .bg-gray-300 { background-color: #2a2a2a !important; }
-.dark .text-gray-900,
-.dark .text-gray-950 { color: #f5f5f0 !important; }
-.dark .text-gray-800,
-.dark .text-gray-700 { color: #d0d0cb !important; }
-.dark .border-gray-100,
-.dark .border-gray-200,
-.dark .border-gray-300 { border-color: #343434 !important; }
-
-.dark [class*="bg-purple-"],
-.dark [class*="bg-pink-"],
-.dark [class*="bg-indigo-"],
-.dark [class*="bg-violet-"],
-.dark [class*="bg-blue-"],
-.dark [class*="bg-teal-"],
-.dark [class*="bg-cyan-"],
-.dark [class*="bg-amber-"],
-.dark [class*="bg-orange-"],
-.dark [class*="bg-red-"],
-.dark [class*="bg-green-"],
-.dark [class*="bg-emerald-"],
-.dark [class*="bg-yellow-"],
-.dark [class*="bg-fuchsia-"] { background-color: #303030 !important; background-image: none !important; }
-.dark [class*="text-purple-"],
-.dark [class*="text-pink-"],
-.dark [class*="text-indigo-"],
-.dark [class*="text-violet-"],
-.dark [class*="text-blue-"],
-.dark [class*="text-teal-"],
-.dark [class*="text-cyan-"],
-.dark [class*="text-amber-"],
-.dark [class*="text-orange-"],
-.dark [class*="text-red-"],
-.dark [class*="text-green-"],
-.dark [class*="text-emerald-"],
-.dark [class*="text-yellow-"],
-.dark [class*="text-fuchsia-"] { color: #bdbdb7 !important; }
-.dark [class*="from-purple-"],
-.dark [class*="from-pink-"],
-.dark [class*="from-indigo-"],
-.dark [class*="from-violet-"],
-.dark [class*="from-blue-"],
-.dark [class*="from-teal-"],
-.dark [class*="from-cyan-"],
-.dark [class*="from-amber-"],
-.dark [class*="from-orange-"],
-.dark [class*="from-red-"],
-.dark [class*="from-green-"],
-.dark [class*="from-emerald-"],
-.dark [class*="from-yellow-"],
-.dark [class*="from-fuchsia-"],
-.dark [class*="to-purple-"],
-.dark [class*="to-pink-"],
-.dark [class*="to-indigo-"],
-.dark [class*="to-violet-"],
-.dark [class*="to-blue-"],
-.dark [class*="to-teal-"],
-.dark [class*="to-cyan-"],
-.dark [class*="to-amber-"],
-.dark [class*="to-orange-"],
-.dark [class*="to-red-"],
-.dark [class*="to-green-"],
-.dark [class*="to-emerald-"],
-.dark [class*="to-yellow-"],
-.dark [class*="to-fuchsia-"] { --tw-gradient-from: #252525 !important; --tw-gradient-to: #505050 !important; }
-.dark [class*="bg-[#d9ff53]"] { background-color: #d0d0cb !important; }
-.dark [class*="text-[#d9ff53]"] { color: #d0d0cb !important; }
-.dark [class*="border-[#d9ff53]"] { border-color: #8a8a84 !important; }
-.dark [class*="bg-[#f5f5f3]"],
-.dark [class*="bg-[#171717]"],
-.dark [class*="bg-[#242424]"] { background-color: #171717 !important; }
-.dark [class*="text-[#171717]"],
-.dark [class*="text-[#101010]"] { color: #f5f5f0 !important; }
-
 /* ── Hero: deep charcoal → silver ── */
 .hero-gradient {
   background: #101010;
@@ -299,3 +219,24 @@ body {
               0 0 40px rgba(156,163,175,0.15),
               0 24px 60px rgba(0,0,0,0.4);
 }
+
+.brief-input {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.75rem;
+  background: rgba(255,255,255,0.05);
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+}
+.brief-input::placeholder { color: rgba(255,255,255,0.3); }
+.brief-input:focus { border-color: #d9ff53; }
+
+/* Admin is a light operations surface inside the site's dark theme. */
+.admin-content h2,
+.admin-content h3 { color: #171717; }
+.admin-content .bg-white { background-color: #ffffff; }
+.admin-content .bg-gray-50 { background-color: #f8f7f4; }
+.admin-input { width: 100%; border: 1px solid rgba(0,0,0,.1); border-radius: .75rem; background: #f8f7f4; padding: .75rem 1rem; font-size: .875rem; color: #171717; outline: none; }
+.admin-input:focus { border-color: #171717; }

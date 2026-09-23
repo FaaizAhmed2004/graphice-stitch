@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 const leadStatuses = ["new", "contacted", "qualified", "converted", "lost"];
@@ -27,6 +27,10 @@ export default function AdminWorkspace({ leads: initialLeads, projects: initialP
   const [pageForm, setPageForm] = useState({ slug: "", title: "", body: "", published: false });
   const [editingPageId, setEditingPageId] = useState<string | null>(null);
 
+  useEffect(() => {
+    document.querySelector<HTMLInputElement>('input[placeholder="Project name"]')?.closest("form")?.setAttribute("novalidate", "true");
+  }, []);
+
   async function updateLead(id: string, status: string) {
     const { error } = await supabase.from("leads").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
     if (error) return setNotice(error.message);
@@ -43,6 +47,14 @@ export default function AdminWorkspace({ leads: initialLeads, projects: initialP
 
   async function createProject(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!projectForm.client_id) {
+      setNotice("Please select a client before creating the project.");
+      return;
+    }
+    if (!projectForm.name.trim() || !projectForm.service.trim()) {
+      setNotice("Add a project name and service before creating the project.");
+      return;
+    }
     const payload = { ...projectForm, quoted_amount: projectForm.quoted_amount ? Number(projectForm.quoted_amount) : null };
     const { data, error } = await supabase.from("projects").insert(payload).select("id, name, service, status, due_date, client_id, profiles:client_id(full_name, company_name)").single();
     if (error) return setNotice(error.message);
@@ -86,7 +98,7 @@ export default function AdminWorkspace({ leads: initialLeads, projects: initialP
 
   async function savePage(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const payload = { slug: pageForm.slug.trim(), title: pageForm.title.trim(), content: { body: pageForm.body }, published: pageForm.published };
+    const payload = { slug: pageForm.slug.trim().toLowerCase(), title: pageForm.title.trim(), content: { body: pageForm.body }, published: pageForm.published, updated_by: adminUserId };
     const query = editingPageId
       ? supabase.from("cms_pages").update(payload).eq("id", editingPageId).select("id, slug, title, content, published").single()
       : supabase.from("cms_pages").insert(payload).select("id, slug, title, content, published").single();

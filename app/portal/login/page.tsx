@@ -1,16 +1,22 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 
 export default function PortalLoginPage() {
   const router = useRouter();
+  const [nextPath, setNextPath] = useState("/portal");
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [form, setForm] = useState({ name: "", company: "", email: "", password: "" });
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const next = new URLSearchParams(window.location.search).get("next");
+    if (next?.startsWith("/")) setNextPath(next);
+  }, []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -20,9 +26,14 @@ export default function PortalLoginPage() {
     const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
     const result = await response.json();
     setLoading(false);
-    if (!response.ok) return setMessage(result.error || "Something went wrong.");
+    if (!response.ok) {
+      const authMessage = result.error?.toLowerCase().includes("invalid login credentials")
+        ? "Email or password is incorrect. New clients should create an account first."
+        : result.error || "Something went wrong.";
+      return setMessage(authMessage);
+    }
     if (mode === "signup" && result.needsEmailConfirmation) return setMessage("Check your email to confirm your account, then sign in.");
-    router.push("/portal");
+    router.push(nextPath);
     router.refresh();
   }
 
