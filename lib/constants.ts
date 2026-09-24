@@ -1,9 +1,8 @@
 export const SITE_NAME = "Graphic Stitch";
 export const SITE_TAGLINE = "Professional Embroidery Digitizing & Vector Art";
-export const WHATSAPP_NUMBER = "923001234567"; // Replace with your WhatsApp number
 export const CONTACT_EMAIL = "info@graphicsstitch.co";
 export const CONTACT_LOCATION = "California, USA";
-export const BUSINESS_HOURS = "Monday–Friday 9:00am–6:00pm PT";
+export const BUSINESS_HOURS = "Monday–Friday 9:00am–6:00pm";
 
 export const NAV_LINKS = [
   { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },

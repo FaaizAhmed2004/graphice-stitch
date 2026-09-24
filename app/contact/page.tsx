@@ -3,13 +3,13 @@ import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
-import { Mail, MapPin, Clock, MessageSquare, ChevronDown } from "lucide-react";
-import { CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS, WHATSAPP_NUMBER } from "@/lib/constants";
+import { Mail, MapPin, Clock, ChevronDown } from "lucide-react";
+import { CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us — Graphic Stitch",
   description:
-    "Get in touch with Graphics Stitch. Call, email, or WhatsApp us for embroidery digitizing quotes, questions, and change requests.",
+    "Get in touch with Graphics Stitch for embroidery digitizing quotes, questions, and change requests.",
 };
 
 const CHANGE_POLICY_FAQS = [
@@ -55,7 +55,7 @@ export default function ContactPage() {
             </span>
           </h1>
           <p className="text-white/65 text-lg max-w-xl mx-auto">
-            Our team is ready to help. Reach out via phone, email, or WhatsApp — we respond quickly.
+            Our team is ready to help. Reach out by phone or email and we&apos;ll respond quickly.
           </p>
         </div>
       </section>
@@ -78,13 +78,6 @@ export default function ContactPage() {
                 value: CONTACT_EMAIL,
                 href: `mailto:${CONTACT_EMAIL}`,
                 color: "bg-[#202020]",
-              },
-              {
-                icon: <MessageSquare className="w-6 h-6" />,
-                label: "WhatsApp",
-                value: "Chat With Us Now",
-                href: `https://wa.me/${WHATSAPP_NUMBER}`,
-                color: "bg-[#2b2b2b]",
               },
             ].map((item) => (
               <a

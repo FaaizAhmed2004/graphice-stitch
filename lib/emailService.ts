@@ -135,7 +135,7 @@ export const sendQuoteEmail = async (data: QuoteFormData) => {
         <div style="background: white; padding: 24px; border: 1px solid #e5e7eb; border-radius: 0 0 8px 8px;">
           <h2 style="color: #1f2937;">Hi ${data.name}, your quote request is received!</h2>
           <p style="color: #4b5563; line-height: 1.6;">We've received your quote request for <strong>${data.service}</strong>. Our team will review your requirements and send you a detailed quote within <strong>a few hours</strong>.</p>
-          <p style="color: #4b5563;">Questions? Reply to this email or WhatsApp us anytime.</p>
+          <p style="color: #4b5563;">Questions? Reply to this email and our team will be happy to help.</p>
         </div>
       </div>
     `,

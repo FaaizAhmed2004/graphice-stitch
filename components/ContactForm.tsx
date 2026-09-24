@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle, Loader2, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
+import { Send, CheckCircle, Loader2, Mail, MapPin, Clock } from "lucide-react";
 import toast from "react-hot-toast";
-import { CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS, WHATSAPP_NUMBER } from "@/lib/constants";
+import { CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS } from "@/lib/constants";
 
 interface FormState {
   name: string;
@@ -57,7 +57,7 @@ export default function ContactForm() {
         toast.error(data.error || "Something went wrong. Please try again.");
       }
     } catch {
-      toast.error("Network error. Please try again or WhatsApp us directly.");
+      toast.error("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -122,15 +122,6 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group">
-                  <div className="w-10 h-10 bg-green-600/40 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-600/60 transition-colors">
-                    <MessageSquare className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500">WhatsApp</p>
-                    <p className="font-semibold text-sm">Chat With Us Now</p>
-                  </div>
-                </a>
               </div>
 
               {/* Silver shimmer divider */}
@@ -195,7 +186,7 @@ export default function ContactForm() {
 
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                      Phone / WhatsApp
+                      Phone
                     </label>
                     <input type="tel" name="phone" value={form.phone} onChange={handleChange}
                       placeholder="+1 (555) 000-0000" className={inputClass} />
