@@ -11,9 +11,9 @@ const NAV_ITEMS = [
   {
     label: "Services",
     children: [
-      { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
-      { label: "Vector Art Conversion",  href: "/vector-art" },
-      { label: "Patch Digitizing",       href: "/patch-digitizing" },
+      { label: "Embroidery Digitizing Service", href: "/embroidery-digitizing" },
+      { label: "Vector Art Services",  href: "/vector-art" },
+      { label: "Custom Patches",       href: "/patch-digitizing" },
     ],
   },
   { label: "Pricing",        href: "/pricing"        },

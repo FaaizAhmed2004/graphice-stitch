@@ -46,10 +46,10 @@ export default function VectorArtPage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="relative hero-gradient py-24 overflow-hidden">
+      <section className="relative overflow-hidden bg-[#101010] py-24 text-white">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-gray-400/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full bg-[#d9ff53]/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
           <div className="absolute inset-0 stripe-bg opacity-40" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4">
@@ -61,8 +61,8 @@ export default function VectorArtPage() {
               </div>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-black leading-tight mb-6">
                 <span className="block text-white">Professional</span>
-                <span className="block shimmer py-1">Vector Art</span>
-                <span className="block text-gray-300">Conversion</span>
+                <span className="block text-[#d9ff53] py-1">Vector Art</span>
+                <span className="block text-white/55">Conversion</span>
               </h1>
               <p className="text-lg text-gray-400 max-w-lg mb-8 leading-relaxed">
                 We convert your raster images into clean, scalable, print-ready vector files.
@@ -75,9 +75,9 @@ export default function VectorArtPage() {
                   </span>
                 ))}
               </div>
-              <p className="text-gray-500 text-sm">
+                <p className="text-white/45 text-sm">
                 Starting at just{" "}
-                <span className="text-white font-black text-2xl">$10</span>
+                <span className="text-[#d9ff53] font-black text-2xl">$10</span>
               </p>
             </div>
 
@@ -202,7 +202,7 @@ export default function VectorArtPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               Use Cases
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
@@ -228,7 +228,7 @@ export default function VectorArtPage() {
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/70 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               How It Works
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
@@ -239,10 +239,10 @@ export default function VectorArtPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {HOW_IT_WORKS.map((step, i) => (
               <div key={i} className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 text-center card-hover">
-                <div className="w-14 h-14 bg-gradient-to-br from-pink-600 to-rose-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4 text-xl font-black">
+                <div className="w-14 h-14 bg-[#171717] rounded-2xl flex items-center justify-center text-[#d9ff53] mx-auto mb-4 text-xl font-black">
                   {step.step}
                 </div>
-                <div className="flex justify-center text-pink-600 dark:text-pink-400 mb-3">{step.icon}</div>
+                <div className="flex justify-center text-[#587500] dark:text-[#d9ff53] mb-3">{step.icon}</div>
                 <h3 className="font-black text-gray-900 dark:text-white text-lg mb-3">{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
               </div>
@@ -256,7 +256,7 @@ export default function VectorArtPage() {
       {/* Pricing */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <span className="inline-block bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
             Pricing
           </span>
           <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-8">
@@ -267,21 +267,21 @@ export default function VectorArtPage() {
               { name: "Simple Artwork", price: "$15", desc: "Clean logos, basic shapes, 1-3 colors" },
               { name: "Complex Artwork", price: "$25", desc: "Detailed illustrations, gradients, many colors", popular: true },
             ].map((p) => (
-              <div key={p.name} className={`rounded-2xl p-8 text-center border ${(p as { popular?: boolean }).popular ? "bg-gradient-to-br from-pink-600 to-rose-600 text-white border-transparent shadow-xl" : "bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700"}`}>
+              <div key={p.name} className={`rounded-2xl p-8 text-center border ${(p as { popular?: boolean }).popular ? "bg-[#171717] text-white border-[#d9ff53] shadow-xl" : "bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700"}`}>
                 {(p as { popular?: boolean }).popular && <span className="text-xs font-bold bg-white/20 px-3 py-1 rounded-full block mb-3">Most Common</span>}
                 <h3 className={`font-bold mb-3 ${(p as { popular?: boolean }).popular ? "text-white" : "text-gray-900 dark:text-white"}`}>{p.name}</h3>
                 <div className={`text-4xl font-black mb-2 ${(p as { popular?: boolean }).popular ? "text-white" : "gradient-text"}`}>{p.price}</div>
-                <p className={`text-sm ${(p as { popular?: boolean }).popular ? "text-pink-100" : "text-gray-500 dark:text-gray-400"}`}>{p.desc}</p>
+                <p className={`text-sm ${(p as { popular?: boolean }).popular ? "text-white/65" : "text-gray-500 dark:text-gray-400"}`}>{p.desc}</p>
               </div>
             ))}
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 text-sm text-gray-600 dark:text-gray-400 border border-gray-100 dark:border-gray-700 mb-6">
-            <strong className="text-purple-700 dark:text-purple-300">Formats delivered:</strong> AI, EPS, SVG, PDF, JPG, PNG (zipped folder).
+            <strong className="text-[#587500] dark:text-[#d9ff53]">Formats delivered:</strong> AI, EPS, SVG, PDF, JPG, PNG (zipped folder).
             Corel Draw CDR files available on request.
           </div>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-bold px-8 py-4 rounded-full hover:shadow-lg hover:shadow-pink-500/30 hover:scale-105 transition-all"
+            className="inline-flex items-center gap-2 bg-[#171717] text-[#d9ff53] font-bold px-8 py-4 rounded-full hover:bg-[#d9ff53] hover:text-[#171717] hover:scale-105 transition-all"
           >
             Get a Vector Art Quote <ArrowRight className="w-4 h-4" />
           </a>

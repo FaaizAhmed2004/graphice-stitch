@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
@@ -62,37 +63,16 @@ export default function EmbroideryDigitizingPage() {
   return (
     <PageLayout>
       {/* Hero */}
-      <section className="relative hero-gradient py-24 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 text-center text-white">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-            <span className="text-sm font-medium">50,000+ Happy Customers Since 2009</span>
+      <section className="relative overflow-hidden bg-[#101010] py-24 text-white">
+        <div className="absolute inset-0 stripe-bg opacity-40" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 lg:grid-cols-[1.05fr_.95fr]">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#d9ff53]/35 bg-[#d9ff53]/10 px-4 py-2 text-xs font-bold uppercase tracking-[.18em] text-[#d9ff53]"><Star className="h-4 w-4" />Embroidery production</span>
+            <h1 className="mt-6 text-4xl font-black leading-tight sm:text-5xl xl:text-6xl">Professional embroidery files built to sew clean.</h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-white/60">Expert manual digitizing for shirts, caps, jackets, patches, and complex artwork. Production decisions are made for the real garment, not just the screen.</p>
+            <div className="mt-8 flex flex-wrap gap-3">{["Manual digitizing", "Next-day turnaround", "Quality guarantee"].map((b) => <span key={b} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white/75"><CheckCircle className="h-4 w-4 text-[#d9ff53]" />{b}</span>)}</div>
           </div>
-          <h1 className="text-4xl md:text-5xl xl:text-6xl font-black leading-tight mb-6">
-            Professional Embroidery{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300">
-              Digitizing Services
-            </span>
-          </h1>
-          <p className="text-lg text-purple-100 max-w-2xl mx-auto mb-8">
-            Expert digitizers. No auto-digitizing. Manual craft on every single design.
-            Next-day turnaround with a 100% quality guarantee.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {["US-Based Digitizers", "Next-Day Turnaround", "Quality Guarantee"].map((b) => (
-              <span key={b} className="flex items-center gap-1.5 bg-white/10 px-4 py-2 rounded-full text-sm font-medium">
-                <CheckCircle className="w-4 h-4 text-green-400" /> {b}
-              </span>
-            ))}
-          </div>
-          <p className="mt-8 text-purple-200">
-            Prices starting at just{" "}
-            <span className="text-white font-black text-2xl">$10</span>
-          </p>
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#202020] shadow-2xl shadow-black/30"><Image src="/Left chest TEDDEY.JPG" alt="Embroidery digitizing project on a garment" width={900} height={620} className="h-85 w-full object-cover" priority /><div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 to-transparent p-6"><p className="text-xs font-bold uppercase tracking-[.18em] text-[#d9ff53]">Made for real sew-out</p><p className="mt-2 text-xl font-black">Clean density, sharp detail, and dependable production files.</p></div></div>
         </div>
       </section>
 
@@ -101,7 +81,7 @@ export default function EmbroideryDigitizingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+              <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
                 Why Graphics Stitch
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6">
@@ -126,14 +106,14 @@ export default function EmbroideryDigitizingPage() {
             {/* Stats cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "50K+", label: "Happy Customers", color: "from-purple-500 to-indigo-600" },
-                { value: "15+", label: "Years Experience", color: "from-pink-500 to-rose-600" },
-                { value: "24hr", label: "Turnaround", color: "from-amber-500 to-orange-500" },
-                { value: "100%", label: "Quality Guaranteed", color: "from-teal-500 to-cyan-600" },
+                { value: "50K+", label: "Happy Customers", color: "bg-[#202020]" },
+                { value: "15+", label: "Years Experience", color: "bg-[#2b2b2b]" },
+                { value: "24hr", label: "Turnaround", color: "bg-[#202020]" },
+                { value: "100%", label: "Quality Guaranteed", color: "bg-[#2b2b2b]" },
               ].map((s) => (
                 <div
                   key={s.label}
-                  className={`bg-gradient-to-br ${s.color} rounded-2xl p-6 text-white text-center`}
+                  className={`${s.color} rounded-2xl border border-white/10 p-6 text-white text-center`}
                 >
                   <div className="text-3xl font-black mb-1">{s.value}</div>
                   <div className="text-white/80 text-sm">{s.label}</div>
@@ -148,7 +128,7 @@ export default function EmbroideryDigitizingPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/70 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               How It Works
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
@@ -163,13 +143,13 @@ export default function EmbroideryDigitizingPage() {
             {HOW_IT_WORKS.map((step, i) => (
               <div key={i} className="relative">
                 {i < HOW_IT_WORKS.length - 1 && (
-                  <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-purple-300 to-pink-300 dark:from-purple-700 dark:to-pink-700 z-0 -translate-x-8" />
+                  <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-[#d9ff53]/40 z-0 -translate-x-8" />
                 )}
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 text-center card-hover">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4 text-2xl font-black">
+                  <div className="w-16 h-16 bg-[#171717] rounded-2xl flex items-center justify-center text-[#d9ff53] mx-auto mb-4 text-2xl font-black">
                     {step.step}
                   </div>
-                  <div className="flex justify-center text-purple-600 dark:text-purple-400 mb-3">
+                  <div className="flex justify-center text-[#587500] dark:text-[#d9ff53] mb-3">
                     {step.icon}
                   </div>
                   <h3 className="font-black text-gray-900 dark:text-white text-lg mb-3">
@@ -189,7 +169,7 @@ export default function EmbroideryDigitizingPage() {
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               Pricing
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
@@ -206,7 +186,7 @@ export default function EmbroideryDigitizingPage() {
                 key={item.name}
                 className={`rounded-2xl p-6 text-center border transition-all ${
                   item.popular
-                    ? "bg-gradient-to-br from-purple-600 to-indigo-600 text-white border-transparent shadow-xl shadow-purple-500/25"
+                    ? "bg-[#171717] text-white border-[#d9ff53] shadow-xl shadow-black/25"
                     : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700 text-gray-800 dark:text-gray-200"
                 }`}
               >
@@ -219,7 +199,7 @@ export default function EmbroideryDigitizingPage() {
                 <div className={`text-3xl font-black mb-1 ${item.popular ? "text-white" : "gradient-text"}`}>
                   {item.price}
                 </div>
-                <p className={`text-xs mt-2 ${item.popular ? "text-purple-200" : "text-gray-400"}`}>
+                <p className={`text-xs mt-2 ${item.popular ? "text-white/65" : "text-gray-400"}`}>
                   {item.note}
                 </p>
               </div>
@@ -243,7 +223,7 @@ export default function EmbroideryDigitizingPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/70 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               Our Specialties
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
@@ -263,17 +243,17 @@ export default function EmbroideryDigitizingPage() {
       </section>
 
       {/* Free designs CTA */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 to-pink-600">
+      <section className="py-16 bg-[#101010]">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
           <h3 className="text-2xl md:text-3xl font-black mb-3">
             See Our Quality For Yourself!
           </h3>
-          <p className="text-purple-100 mb-6">
+          <p className="text-white/60 mb-6">
             Explore our free designs library and download test files — completely risk-free.
           </p>
           <a
             href="/sample-designs"
-            className="inline-flex items-center gap-2 bg-white text-purple-700 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-transform shadow-lg"
+            className="inline-flex items-center gap-2 bg-[#d9ff53] text-[#171717] font-bold px-8 py-3.5 rounded-full hover:bg-white hover:scale-105 transition-transform shadow-lg"
           >
             Browse Sample Designs <ArrowRight className="w-4 h-4" />
           </a>
