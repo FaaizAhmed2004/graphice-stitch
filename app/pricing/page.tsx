@@ -89,7 +89,7 @@ export default async function PricingPage() {
           {/* Embroidery */}
           <div className="mb-20">
             <div className="text-center mb-10">
-              <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+              <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
                 Embroidery Digitizing
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
@@ -108,7 +108,7 @@ export default async function PricingPage() {
                   }`}
                 >
                   {item.popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#d9ff53] text-[#171717] text-xs font-bold px-3 py-1 rounded-full shadow">
                       Most Popular
                     </span>
                   )}
@@ -118,13 +118,13 @@ export default async function PricingPage() {
                   <div className={`text-4xl font-black mb-3 ${item.popular ? "text-white" : "gradient-text"}`}>
                     {item.price}
                   </div>
-                  <p className={`text-xs leading-relaxed ${item.popular ? "text-purple-200" : "text-gray-400"}`}>
+                  <p className={`text-xs leading-relaxed ${item.popular ? "text-white/65" : "text-gray-400"}`}>
                     {item.note}
                   </p>
                   <a
                     href="#contact"
                     className={`mt-5 inline-flex items-center gap-1 text-xs font-semibold ${
-                      item.popular ? "text-white hover:text-purple-200" : "text-purple-600 dark:text-purple-400 hover:text-pink-600"
+                      item.popular ? "text-[#d9ff53] hover:text-white" : "text-[#587500] dark:text-[#d9ff53] hover:text-black"
                     } transition-colors`}
                   >
                     Get Quote <ArrowRight className="w-3 h-3" />
@@ -140,7 +140,7 @@ export default async function PricingPage() {
           {/* Vector */}
           <div className="mb-16">
             <div className="text-center mb-10">
-              <span className="inline-block bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+              <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
                 Vector Art
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
@@ -166,7 +166,7 @@ export default async function PricingPage() {
                   <div className={`text-4xl font-black mb-2 ${item.popular ? "text-white" : "gradient-text"}`}>
                     {item.price}
                   </div>
-                  <p className={`text-sm ${item.popular ? "text-pink-100" : "text-gray-500 dark:text-gray-400"}`}>
+                  <p className={`text-sm ${item.popular ? "text-white/65" : "text-gray-500 dark:text-gray-400"}`}>
                     {item.note}
                   </p>
                 </div>
@@ -181,7 +181,7 @@ export default async function PricingPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
             {WHY_US.map((item) => (
               <div key={item.title} className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 text-center">
-                <div className="w-11 h-11 bg-purple-100 dark:bg-purple-900/40 rounded-xl flex items-center justify-center text-purple-600 dark:text-purple-400 mx-auto mb-3">
+                <div className="w-11 h-11 bg-[#d9ff53]/20 rounded-xl flex items-center justify-center text-[#587500] dark:text-[#d9ff53] mx-auto mb-3">
                   {item.icon}
                 </div>
                 <h4 className="font-bold text-gray-900 dark:text-white text-sm mb-2">{item.title}</h4>
@@ -199,12 +199,12 @@ export default async function PricingPage() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="rounded-3xl bg-[#171717] p-10 text-center text-white">
             <h3 className="text-2xl md:text-3xl font-black mb-3">Need a custom patch?</h3>
-            <p className="text-purple-100 mb-6 max-w-xl mx-auto">
+            <p className="text-white/60 mb-6 max-w-xl mx-auto">
               We build clean patch files with accurate borders, fills, and stitch direction for every garment and backing.
             </p>
             <a
               href="/embroidery-digitizing"
-              className="inline-flex items-center gap-2 bg-white text-purple-700 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-transform shadow-lg"
+              className="inline-flex items-center gap-2 bg-[#d9ff53] text-[#171717] font-bold px-8 py-3.5 rounded-full hover:bg-white hover:scale-105 transition-transform shadow-lg"
             >
               Explore Patch Digitizing <ArrowRight className="w-4 h-4" />
             </a>

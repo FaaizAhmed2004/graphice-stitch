@@ -10,15 +10,15 @@ export const metadata: Metadata = {
 };
 
 const TEAM = [
-  { name: "Ahmed K.", role: "Owner — CEO", color: "from-purple-500 to-indigo-600" },
-  { name: "Sara M.", role: "Admin / Accounting", color: "from-pink-500 to-rose-600" },
-  { name: "Zara B.", role: "Director of Business Dev.", color: "from-amber-500 to-orange-500" },
-  { name: "Nadia F.", role: "Social Media / Marketing", color: "from-teal-500 to-cyan-600" },
-  { name: "Omar A.", role: "Head Digitizer", color: "from-violet-500 to-purple-600" },
-  { name: "Lisa D.", role: "Customer Service", color: "from-red-500 to-pink-600" },
-  { name: "Hamza I.", role: "Digitizer", color: "from-indigo-500 to-blue-600" },
-  { name: "Aisha J.", role: "Customer Service", color: "from-green-500 to-emerald-600" },
-  { name: "Bilal K.", role: "Digitizer", color: "from-fuchsia-500 to-pink-600" },
+  { name: "Ahmed K.", role: "Owner — CEO", color: "bg-[#171717]" },
+  { name: "Sara M.", role: "Admin / Accounting", color: "bg-[#202020]" },
+  { name: "Zara B.", role: "Director of Business Dev.", color: "bg-[#2b2b2b]" },
+  { name: "Nadia F.", role: "Social Media / Marketing", color: "bg-[#171717]" },
+  { name: "Omar A.", role: "Head Digitizer", color: "bg-[#202020]" },
+  { name: "Lisa D.", role: "Customer Service", color: "bg-[#2b2b2b]" },
+  { name: "Hamza I.", role: "Digitizer", color: "bg-[#171717]" },
+  { name: "Aisha J.", role: "Customer Service", color: "bg-[#202020]" },
+  { name: "Bilal K.", role: "Digitizer", color: "bg-[#2b2b2b]" },
 ];
 
 const VALUES = [
@@ -34,8 +34,8 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative hero-gradient py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-pink-500/20 rounded-full blur-3xl" />
+          <div className="absolute -top-32 -right-32 w-80 h-80 bg-[#d9ff53]/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
           <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
@@ -43,11 +43,11 @@ export default function AboutPage() {
           </span>
           <h1 className="text-4xl md:text-5xl font-black mb-6">
             Welcome to{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-yellow-300">
+            <span className="text-[#d9ff53]">
               Graphics Stitch
             </span>
           </h1>
-          <p className="text-purple-100 text-lg max-w-2xl mx-auto">
+          <p className="text-white/65 text-lg max-w-2xl mx-auto">
             A professional online embroidery digitizing and vector art company
             serving customers worldwide with precision, consistency, and care.
           </p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
-              <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+              <span className="inline-block bg-[#d9ff53]/20 text-[#587500] dark:text-[#d9ff53] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
                 Our Story
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6">
@@ -91,7 +91,7 @@ export default function AboutPage() {
                   "Quality-first approach on every project",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -101,12 +101,12 @@ export default function AboutPage() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: "50K+", label: "Happy Customers", color: "from-purple-600 to-indigo-700" },
-                { value: "15+", label: "Years Experience", color: "from-pink-600 to-rose-600" },
-                { value: "24hr", label: "Turnaround Time", color: "from-amber-500 to-orange-500" },
-                { value: "100%", label: "Quality Guarantee", color: "from-teal-500 to-cyan-600" },
+                { value: "50K+", label: "Happy Customers", color: "bg-[#171717]" },
+                { value: "15+", label: "Years Experience", color: "bg-[#202020]" },
+                { value: "24hr", label: "Turnaround Time", color: "bg-[#2b2b2b]" },
+                { value: "100%", label: "Quality Guarantee", color: "bg-[#171717]" },
               ].map((s) => (
-                <div key={s.label} className={`bg-gradient-to-br ${s.color} rounded-2xl p-8 text-white text-center`}>
+                <div key={s.label} className={`${s.color} rounded-2xl border border-black/10 p-8 text-white text-center`}>
                   <div className="text-3xl font-black mb-1">{s.value}</div>
                   <div className="text-white/80 text-sm">{s.label}</div>
                 </div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/70 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               Our Values
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
@@ -143,7 +143,7 @@ export default function AboutPage() {
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <span className="inline-block bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/70 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
               Our Team
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
@@ -158,7 +158,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {TEAM.map((member) => (
               <div key={member.name} className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover">
-                <div className={`w-16 h-16 bg-gradient-to-br ${member.color} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg`}>
+                <div className={`w-16 h-16 ${member.color} rounded-2xl flex items-center justify-center text-[#d9ff53] text-3xl mx-auto mb-4 shadow-lg`}>
                   {member.name.slice(0, 1)}
                 </div>
                 <h3 className="font-bold text-gray-900 dark:text-white text-sm">{member.name}</h3>
@@ -170,15 +170,15 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-purple-700 to-pink-600">
+      <section className="py-16 bg-[#101010]">
         <div className="max-w-3xl mx-auto px-4 text-center text-white">
           <h3 className="text-2xl md:text-3xl font-black mb-3">Ready to Work With Us?</h3>
-          <p className="text-purple-100 mb-6">
+          <p className="text-white/60 mb-6">
             Join thousands of happy customers who trust Graphics Stitch for their digitizing needs.
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-white text-purple-700 font-bold px-8 py-3.5 rounded-full hover:scale-105 transition-transform shadow-lg"
+            className="inline-flex items-center gap-2 bg-[#d9ff53] text-[#171717] font-bold px-8 py-3.5 rounded-full hover:bg-white hover:scale-105 transition-transform shadow-lg"
           >
             Get a Free Quote <ArrowRight className="w-4 h-4" />
           </a>
