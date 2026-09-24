@@ -9,18 +9,6 @@ export const metadata: Metadata = {
     "Learn about Graphics Stitch — professional embroidery digitizing and vector art services. 15+ years of experience. Expert in-house team. Worldwide clients.",
 };
 
-const TEAM = [
-  { name: "Ahmed K.", role: "Owner — CEO", color: "bg-[#171717]" },
-  { name: "Sara M.", role: "Admin / Accounting", color: "bg-[#202020]" },
-  { name: "Zara B.", role: "Director of Business Dev.", color: "bg-[#2b2b2b]" },
-  { name: "Nadia F.", role: "Social Media / Marketing", color: "bg-[#171717]" },
-  { name: "Omar A.", role: "Head Digitizer", color: "bg-[#202020]" },
-  { name: "Lisa D.", role: "Customer Service", color: "bg-[#2b2b2b]" },
-  { name: "Hamza I.", role: "Digitizer", color: "bg-[#171717]" },
-  { name: "Aisha J.", role: "Customer Service", color: "bg-[#202020]" },
-  { name: "Bilal K.", role: "Digitizer", color: "bg-[#2b2b2b]" },
-];
-
 const VALUES = [
   { title: "Precision", desc: "Every stitch path is hand-crafted with attention to detail, ensuring flawless sew-out results." },
   { title: "Speed", desc: "Next-day turnaround on all standard orders. Same-day rush service available when you need it fast." },
@@ -133,36 +121,6 @@ export default function AboutPage() {
               <div key={v.title} className="bg-white dark:bg-gray-800 rounded-2xl p-7 border border-gray-100 dark:border-gray-700 text-center card-hover">
                 <h3 className="font-black text-gray-900 dark:text-white mb-3">{v.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-black/5 dark:bg-white/10 text-black/60 dark:text-white/70 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-              Our Team
-            </span>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
-              Behind Every Great Company Is a{" "}
-              <span className="gradient-text">Great Team</span>
-            </h2>
-            <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
-              Get to know the talented individuals who make up our team of designers, digitizers,
-              customer service specialists, and problem solvers.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {TEAM.map((member) => (
-              <div key={member.name} className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center border border-gray-100 dark:border-gray-700 card-hover">
-                <div className={`w-16 h-16 ${member.color} rounded-2xl flex items-center justify-center text-[#d9ff53] text-3xl mx-auto mb-4 shadow-lg`}>
-                  {member.name.slice(0, 1)}
-                </div>
-                <h3 className="font-bold text-gray-900 dark:text-white text-sm">{member.name}</h3>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{member.role}</p>
               </div>
             ))}
           </div>

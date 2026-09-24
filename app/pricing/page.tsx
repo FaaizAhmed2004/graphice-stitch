@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "Transparent pricing for embroidery digitizing and vector art. Left chest from $15, 3D Puff from $25, Full Back from $65. No hidden fees.",
 };
 
+export const dynamic = "force-dynamic";
+
 const EMBROIDERY_PRICING = [
   { name: "Left Chest", price: "$15", note: "With artwork ready for embroidery", popular: false },
   { name: "Left Chest + Cap", price: "$20", note: "With artwork ready for embroidery", popular: true },

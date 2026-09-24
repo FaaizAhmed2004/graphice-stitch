@@ -5,6 +5,8 @@ import Image from "next/image";
 import { PORTFOLIO_ITEMS } from "@/lib/constants";
 
 const CATEGORIES = ["All", "Embroidery", "3D Puff", "Vector Art", "Patch"];
+type PortfolioItem = { id: string | number; title: string; category: string; image: string };
+type Props = { items?: { id: string; title: string; category: string; image_url: string | null }[] };
 
 const SPECIALTIES = [
   { title: "3D Puff",       desc: "Foam puff for bold caps"   },
@@ -14,11 +16,14 @@ const SPECIALTIES = [
   { title: "Pet Portraits", desc: "Custom pet digitizing"      },
 ];
 
-export default function Portfolio() {
+export default function Portfolio({ items }: Props) {
   const [active, setActive] = useState("All");
+  const portfolioItems: PortfolioItem[] = items?.length
+    ? items.filter((item) => item.image_url).map((item) => ({ id: item.id, title: item.title, category: item.category, image: item.image_url as string }))
+    : PORTFOLIO_ITEMS;
 
   const filtered =
-    active === "All" ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter((i) => i.category === active);
+    active === "All" ? portfolioItems : portfolioItems.filter((i) => i.category === active);
 
   return (
     <section id="portfolio" className="bg-[#101010] py-28 text-white">
@@ -63,7 +68,7 @@ export default function Portfolio() {
               className="group cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-[#202020] card-hover"
             >
               <div className="relative flex h-52 items-center justify-center overflow-hidden bg-[#242424]">
-                <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-500 group-hover:scale-105" />
+                {item.image.startsWith("/") ? <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : <img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />}
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
               </div>
