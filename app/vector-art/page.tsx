@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
+import ManagedServicesPricing from "@/components/ManagedServicesPricing";
 import Testimonials from "@/components/Testimonials";
 import { CheckCircle, Upload, Settings, Download, ArrowRight } from "lucide-react";
 
@@ -249,6 +250,8 @@ export default function VectorArtPage() {
           </div>
         </div>
       </section>
+
+      <ManagedServicesPricing category="vector" title="Vector Services & Pricing" description="See the available vector services and place your order after signing in to your client workspace." />
 
       {/* Pricing */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">

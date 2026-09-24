@@ -3,6 +3,7 @@ import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
+import ManagedServicesPricing from "@/components/ManagedServicesPricing";
 import { CheckCircle, Clock, Star, ArrowRight, Upload, Settings, Download } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -235,6 +236,8 @@ export default function EmbroideryDigitizingPage() {
           </p>
         </div>
       </section>
+
+      <ManagedServicesPricing category="embroidery" title="Embroidery Services & Pricing" description="Review our embroidery services and place your order after signing in to the client workspace." />
 
       {/* Specialties */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900/50 section-pattern">

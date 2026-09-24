@@ -3,6 +3,7 @@ import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Check, ArrowRight, Clock, RefreshCw, ShieldCheck } from "lucide-react";
+import ManagedServicesPricing from "@/components/ManagedServicesPricing";
 
 export const metadata: Metadata = {
   title: "Pricing — Graphic Stitch",
@@ -190,6 +191,8 @@ export default async function PricingPage() {
           </div>
         </div>
       </section>
+
+      <ManagedServicesPricing title="Services & Order Pricing" description="Explore every published service, compare its available plans, and place your order after signing in." />
 
       {/* Patch service banner */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
