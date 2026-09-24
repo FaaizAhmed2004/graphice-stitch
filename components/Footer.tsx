@@ -87,10 +87,10 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Embroidery Digitizing", href: "/embroidery-digitizing" },
-                { label: "Vector Art", href: "/vector-art" },
+                { label: "Embroidery Digitizing Service", href: "/embroidery-digitizing" },
+                { label: "Vector Art Service", href: "/vector-art" },
                 { label: "Our Pricing", href: "/pricing" },
-                { label: "Patch Digitizing", href: "/embroidery-digitizing" },
+                { label: "Custom Patches", href: "/embroidery-digitizing" },
                 { label: "Sample Designs", href: "/sample-designs" },
                 { label: "Blog / Resources", href: "/blog" },
                 { label: "About Us", href: "/about" },
