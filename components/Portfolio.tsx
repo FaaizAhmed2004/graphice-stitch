@@ -8,6 +8,10 @@ const CATEGORIES = ["All", "Embroidery", "3D Puff", "Vector Art", "Patch"];
 type PortfolioItem = { id: string | number; title: string; category: string; image: string };
 type Props = { items?: { id: string; title: string; category: string; image_url: string | null }[] };
 
+function remoteImageLoader({ src }: { src: string }) {
+  return src;
+}
+
 const SPECIALTIES = [
   { title: "3D Puff",       desc: "Foam puff for bold caps"   },
   { title: "Coloreel",      desc: "Latest thread tech"         },
@@ -68,7 +72,7 @@ export default function Portfolio({ items }: Props) {
               className="group cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-[#202020] card-hover"
             >
               <div className="relative flex h-52 items-center justify-center overflow-hidden bg-[#242424]">
-                {item.image.startsWith("/") ? <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-500 group-hover:scale-105" /> : <img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />}
+                <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, 33vw" loader={item.image.startsWith("/") ? undefined : remoteImageLoader} unoptimized={!item.image.startsWith("/")} className="object-cover transition duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
               </div>
