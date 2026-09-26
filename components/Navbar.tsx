@@ -59,7 +59,7 @@ export default function Navbar() {
       <div className="hidden md:block bg-gray-950 dark:bg-black text-gray-400 text-xs py-1.5">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <span> Embroidery + vector production</span>
-          <span className="text-white/35">Next-day turnaround / From $15</span>
+          <span className="text-white/35">Same-day turnaround / From $15</span>
         </div>
       </div>
 

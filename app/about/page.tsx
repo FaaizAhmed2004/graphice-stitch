@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const VALUES = [
   { title: "Precision", desc: "Every stitch path is hand-crafted with attention to detail, ensuring flawless sew-out results." },
-  { title: "Speed", desc: "Next-day turnaround on all standard orders. Same-day rush service available when you need it fast." },
+  { title: "Speed", desc: "Same-day turnaround on all standard orders. Same-day rush service available when you need it fast." },
   { title: "Partnership", desc: "We work as an extension of your team, not just a vendor. Your success is our success." },
   { title: "Guarantee", desc: "100% quality guarantee on every file. Free revisions within 14 days, or a full refund." },
 ];

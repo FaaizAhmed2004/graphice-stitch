@@ -10,7 +10,7 @@ import { CheckCircle, Clock, Star, ArrowRight, Upload, Settings, Download } from
 export const metadata: Metadata = {
   title: "Embroidery Digitizing Services — Graphic Stitch",
   description:
-    "Professional embroidery digitizing starting at $15. Manual digitizing by expert artists. DST, PES, EMB, XXX formats. Next-day turnaround with quality guarantee.",
+    "Professional embroidery digitizing starting at $15. Manual digitizing by expert artists. DST, PES, EMB, XXX formats. Same-day turnaround with quality guarantee.",
 };
 
 const PRICING = [
@@ -44,7 +44,7 @@ const HOW_IT_WORKS = [
 const FEATURES = [
   "In-house expert digitizers — no outsourcing",
   "Manual digitizing — no auto-digitizing software",
-  "Next-day turnaround guaranteed",
+  "Same-day turnaround guaranteed",
   "All major machine formats supported",
   // "Free revisions within 14 days",
   "Custom patch borders and fills",
@@ -70,7 +70,7 @@ export default function EmbroideryDigitizingPage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-[#d9ff53]/35 bg-[#d9ff53]/10 px-4 py-2 text-xs font-bold uppercase tracking-[.18em] text-[#d9ff53]"><Star className="h-4 w-4" />Embroidery production</span>
             <h1 className="mt-6 text-4xl font-black leading-tight sm:text-5xl xl:text-6xl">Professional embroidery files built to sew clean.</h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-white/60">Expert manual digitizing for shirts, caps, jackets, patches, and complex artwork. Production decisions are made for the real garment, not just the screen.</p>
-            <div className="mt-8 flex flex-wrap gap-3">{["Manual digitizing", "Next-day turnaround", "Quality guarantee"].map((b) => <span key={b} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white/75"><CheckCircle className="h-4 w-4 text-[#d9ff53]" />{b}</span>)}</div>
+            <div className="mt-8 flex flex-wrap gap-3">{["Manual digitizing", "Same-day turnaround", "Quality guarantee"].map((b) => <span key={b} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white/75"><CheckCircle className="h-4 w-4 text-[#d9ff53]" />{b}</span>)}</div>
           </div>
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#202020] shadow-2xl shadow-black/30"><Image src="/Left chest TEDDEY.JPG" alt="Embroidery digitizing project on a garment" width={900} height={620} className="h-85 w-full object-cover" priority /><div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/85 to-transparent p-6"><p className="text-xs font-bold uppercase tracking-[.18em] text-[#d9ff53]">Made for real sew-out</p><p className="mt-2 text-xl font-black">Clean density, sharp detail, and dependable production files.</p></div></div>
         </div>

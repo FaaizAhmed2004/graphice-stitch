@@ -69,7 +69,7 @@ export default function VectorArtPage() {
                 Perfect for screen printing, vinyl, laser cutting, and more.
               </p>
               <div className="flex flex-wrap gap-3 mb-8">
-                {["Manual Tracing", "Next-Day Turnaround", "All Formats Delivered"].map((b) => (
+                {["Manual Tracing", "Same-Day Turnaround", "All Formats Delivered"].map((b) => (
                   <span key={b} className="flex items-center gap-1.5 glass border border-white/20 px-4 py-2 rounded-full text-sm font-medium text-gray-200">
                     <CheckCircle className="w-4 h-4 text-gray-400" /> {b}
                   </span>
@@ -86,8 +86,8 @@ export default function VectorArtPage() {
               {/* Main showcase image */}
               <div className="relative rounded-3xl overflow-hidden glow-ring float-animation">
                 <Image
-                  src="/vector-butterfly.png"
-                  alt="Vector butterfly art sample"
+                  src="/Cowboys Champions Vector Art R1.jpg"
+                  alt="Cowboys Champions vector art sample"
                   width={600}
                   height={380}
                   className="w-full h-64 object-cover"
@@ -178,8 +178,8 @@ export default function VectorArtPage() {
               <div className="rounded-2xl overflow-hidden border border-gray-300 dark:border-gray-600 group card-hover ring-1 ring-gray-400/20">
                 <div className="relative h-48">
                   <Image
-                    src="/vector-butterfly.png"
-                    alt="After vector conversion — butterfly"
+                    src="/Cowboys Champions Vector Art R1.jpg"
+                    alt="After vector conversion — Cowboys Champions vector art"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="50vw"

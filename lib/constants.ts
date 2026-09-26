@@ -31,7 +31,7 @@ export const SERVICES = [
     description:
       "Perfect for shirts, polos, and jackets. Our left chest designs are crisp, clean, and sew out perfectly on any fabric.",
     icon: "shirt",
-    price: "$15",
+    price: "$10",
     badge: "Most Popular",
   },
   {
@@ -40,7 +40,7 @@ export const SERVICES = [
     description:
       "Caps require specialized digitizing techniques. We handle the curve and underlay perfectly for every cap style.",
     icon: "hard-hat",
-    price: "$20",
+    price: "$10",
     badge: null,
   },
   {
@@ -159,7 +159,7 @@ export const FAQS = [
   {
     question: "What is the normal turnaround time?",
     answer:
-      "Standard turnaround is 24 hours (next business day). Rush same-day service is available for most orders.",
+      "Rush same-day service is available for most orders.",
   },
   {
     question: "What file formats do you accept?",
@@ -180,6 +180,6 @@ export const PORTFOLIO_ITEMS = [
 export const STATS = [
   { value: "50,000+", label: "Happy Customers" },
   { value: "15+", label: "Years Experience" },
-  { value: "24hr", label: "Turnaround Time" },
+  { value: "12hr", label: "Turnaround Time" },
   { value: "100%", label: "Quality Guarantee" },
 ];

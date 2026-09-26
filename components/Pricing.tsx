@@ -65,7 +65,7 @@ export default function Pricing() {
             </div>
 
             <ul className="space-y-2 mb-6">
-              {["Free revisions within 14 days", "Next-day turnaround", "All machine formats available"].map((f) => (
+              {["Free revisions within 14 days", "Same-day turnaround", "All machine formats available"].map((f) => (
                 <li key={f} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                   <Check className="w-4 h-4 text-gray-500 dark:text-gray-400 shrink-0" /> {f}
                 </li>

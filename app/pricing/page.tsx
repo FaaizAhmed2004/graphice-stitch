@@ -26,7 +26,7 @@ const VECTOR_PRICING = [
 ];
 
 const WHY_US = [
-  { icon: <Clock className="w-5 h-5" />, title: "Next-Day Turnaround", desc: "Standard 24-hour delivery. Rush same-day available." },
+  { icon: <Clock className="w-5 h-5" />, title: "Same-Day Turnaround", desc: "Standard 24-hour delivery. Rush same-day available." },
   { icon: <RefreshCw className="w-5 h-5" />, title: "Free Revisions", desc: "Free changes within 14 days of delivery. No questions asked." },
   { icon: <ShieldCheck className="w-5 h-5" />, title: "Quality Guarantee", desc: "Not satisfied? Full refund or account credit within 14 days." },
   { icon: <Check className="w-5 h-5" />, title: "All Formats Included", desc: "Get your file in every format — no extra charge." },
@@ -50,15 +50,62 @@ export default async function PricingPage() {
   const [{ data: managedPage }, { data: plans }, { data: services }] = await Promise.all([
     supabase.from("cms_pages").select("title, content, published").eq("slug", "pricing").eq("published", true).maybeSingle(),
     supabase.from("pricing_plans").select("name, price, description, featured, service_id").eq("active", true).order("sort_order"),
-    supabase.from("services").select("id, category").eq("published", true),
+    supabase.from("services").select("id, name, category, starting_price, delivery_time").eq("published", true).order("sort_order"),
   ]);
   const managedPricing = readManagedPricing(managedPage?.content?.body);
-  const serviceCategories = new Map((services || []).map((service) => [service.id, service.category]));
-  const databasePricing = (plans || []).map((plan) => ({ name: plan.name, price: `$${plan.price}`, note: plan.description || "Professional production service", popular: plan.featured, category: serviceCategories.get(plan.service_id || "") }));
-  const embroideryPricing = databasePricing.filter((item) => item.category === "embroidery").map((item) => ({ name: item.name, price: item.price, note: item.note, popular: item.popular }));
-  const vectorPricing = databasePricing.filter((item) => item.category === "vector").map((item) => ({ name: item.name, price: item.price, note: item.note, popular: item.popular }));
-  const finalEmbroideryPricing = embroideryPricing.length ? embroideryPricing : managedPricing?.embroidery.length ? managedPricing.embroidery : EMBROIDERY_PRICING;
-  const finalVectorPricing = vectorPricing.length ? vectorPricing : managedPricing?.vector.length ? managedPricing.vector : VECTOR_PRICING;
+
+  // Build a map of service id → full service row
+  const serviceMap = new Map((services || []).map((s) => [s.id, s]));
+
+  // Pricing plans from DB — price comes from pricing_plans.price
+  const databasePricing = (plans || []).map((plan) => {
+    const svc = serviceMap.get(plan.service_id || "");
+    return {
+      name: plan.name,
+      price: `$${plan.price}`,
+      note: plan.description || "Professional production service",
+      popular: plan.featured,
+      category: svc?.category,
+    };
+  });
+
+  // Starting-price cards from services table — these drive the yellow badge
+  // Use services.starting_price so admin changes reflect immediately
+  const embroideryServices = (services || []).filter((s) => s.category === "embroidery");
+  const vectorServices = (services || []).filter((s) => s.category === "vector");
+
+  const serviceEmbroideryPricing = embroideryServices.map((s) => ({
+    name: s.name,
+    price: s.starting_price != null ? `$${s.starting_price}` : "Quote",
+    note: s.delivery_time ? `Delivery: ${s.delivery_time}` : "Professional production service",
+    popular: false,
+  }));
+  const serviceVectorPricing = vectorServices.map((s) => ({
+    name: s.name,
+    price: s.starting_price != null ? `$${s.starting_price}` : "Quote",
+    note: s.delivery_time ? `Delivery: ${s.delivery_time}` : "Professional production service",
+    popular: false,
+  }));
+
+  // Priority: DB pricing_plans → services.starting_price → CMS → hardcoded
+  const planEmbroidery = databasePricing.filter((i) => i.category === "embroidery").map((i) => ({ name: i.name, price: i.price, note: i.note, popular: i.popular }));
+  const planVector = databasePricing.filter((i) => i.category === "vector").map((i) => ({ name: i.name, price: i.price, note: i.note, popular: i.popular }));
+
+  const finalEmbroideryPricing = planEmbroidery.length
+    ? planEmbroidery
+    : serviceEmbroideryPricing.length
+      ? serviceEmbroideryPricing
+      : managedPricing?.embroidery.length
+        ? managedPricing.embroidery
+        : EMBROIDERY_PRICING;
+
+  const finalVectorPricing = planVector.length
+    ? planVector
+    : serviceVectorPricing.length
+      ? serviceVectorPricing
+      : managedPricing?.vector.length
+        ? managedPricing.vector
+        : VECTOR_PRICING;
   return (
     <PageLayout>
       {/* Hero */}

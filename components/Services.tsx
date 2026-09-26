@@ -5,12 +5,12 @@ import { ArrowUpRight, HardHat, Layers, Maximize, PenTool, Shield, Shirt } from 
 import { SERVICES } from "@/lib/constants";
 
 const serviceImages = [
-  "/Left chest TEDDEY.JPG",
-  "/RAIDERS hat.JPG",
-  "/Cowboys Champions Vector Art R1.jpg",
-  "/MARATHON JB sweatshirts.JPG",
-  "/vector.jpg",
-  "/Fresh Start.JPG",
+  "/Left chest TEDDEY.JPG",        // Left Chest Digitizing
+  "/RAIDERS hat.JPG",              // Cap / Hat Digitizing
+  "/Halos.JPG",                    // 3D Puff Embroidery — cap/hat with raised design
+  "/MARATHON JB sweatshirts.JPG",  // Full Back / Jacket
+  "/Cowboys Champions Vector Art R1.jpg", // Vector Art Conversion
+  "/Vintage_Cutting.jpg",          // Patch Digitizing
 ];
 
 const serviceIcons = [Shirt, HardHat, Layers, Maximize, PenTool, Shield];

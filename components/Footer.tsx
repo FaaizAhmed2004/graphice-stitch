@@ -14,7 +14,7 @@ export default function Footer() {
             Try Us Out Today — Discover the Difference
           </h3>
           <p className="text-gray-400 mb-6">
-            Starting at just <strong className="text-white">$15</strong>. Next-day turnaround. 100% quality guarantee.
+            Starting at just <strong className="text-white">$10</strong>. Same-day turnaround. 100% quality guarantee.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -43,7 +43,7 @@ export default function Footer() {
               <span className="text-white font-black text-lg">{SITE_NAME}</span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed mb-5">
-              Professional embroidery digitizing and vector art services. Hand-crafted by expert artists with next-day turnaround.
+              Professional embroidery digitizing and vector art services. Hand-crafted by expert artists with same-day turnaround.
             </p>
             <div className="flex gap-3">
               <a href="
