@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { PORTFOLIO_ITEMS } from "@/lib/constants";
 
-const CATEGORIES = ["All", "Embroidery", "3D Puff", "Vector Art", "Patch"];
+const STATIC_CATEGORIES = ["All", "Embroidery", "3D Puff", "Vector Art", "Patch"];
 type PortfolioItem = { id: string | number; title: string; category: string; image: string };
-type Props = { items?: { id: string; title: string; category: string; image_url: string | null }[] };
+type Props = {
+  items?: { id: string; title: string; category: string; image_url: string | null }[];
+  /** show "View all works" CTA — used on homepage, hidden on /works page */
+  showViewAll?: boolean;
+};
 
 function remoteImageLoader({ src }: { src: string }) {
   return src;
@@ -20,11 +26,19 @@ const SPECIALTIES = [
   { title: "Pet Portraits", desc: "Custom pet digitizing"      },
 ];
 
-export default function Portfolio({ items }: Props) {
-  const [active, setActive] = useState("All");
+export default function Portfolio({ items, showViewAll = false }: Props) {
   const portfolioItems: PortfolioItem[] = items?.length
-    ? items.filter((item) => item.image_url).map((item) => ({ id: item.id, title: item.title, category: item.category, image: item.image_url as string }))
+    ? items.filter((item) => item.image_url).map((item) => ({
+        id: item.id, title: item.title, category: item.category, image: item.image_url as string,
+      }))
     : PORTFOLIO_ITEMS;
+
+  // Build category list dynamically from actual data
+  const dynamicCats = ["All", ...Array.from(new Set(portfolioItems.map((i) => i.category))).filter(Boolean)];
+  // fallback to static list if data is empty
+  const CATEGORIES = portfolioItems.length ? dynamicCats : STATIC_CATEGORIES;
+
+  const [active, setActive] = useState("All");
 
   const filtered =
     active === "All" ? portfolioItems : portfolioItems.filter((i) => i.category === active);
@@ -85,6 +99,18 @@ export default function Portfolio({ items }: Props) {
             </div>
           ))}
         </div>
+
+        {/* View all CTA — only on homepage */}
+        {showViewAll && (
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/works"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 hover:border-[#d9ff53] transition-all duration-200"
+            >
+              View all works <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
 
         {/* Specialties strip */}
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">

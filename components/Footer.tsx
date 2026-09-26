@@ -67,6 +67,7 @@ https://www.instagram.com/graphic_stitch.co?utm_source=ig_web_button_share_sheet
                 { label: "Vector Art Service", href: "/vector-art" },
                 { label: "Our Pricing", href: "/pricing" },
                 { label: "Custom Patches", href: "/embroidery-digitizing" },
+                { label: "Our Works", href: "/works" },
                 { label: "Sample Designs", href: "/sample-designs" },
                 { label: "Blog / Resources", href: "/blog" },
                 { label: "About Us", href: "/about" },

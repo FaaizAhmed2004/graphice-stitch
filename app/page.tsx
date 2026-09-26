@@ -23,7 +23,7 @@ export default async function Home() {
       <Hero />
       <Services />
       <ManagedServicesPricing limit={6} />
-      <Portfolio items={portfolio ?? undefined} />
+      <Portfolio items={portfolio ?? undefined} showViewAll />
       <ContactForm />
       <Footer />
     </main>

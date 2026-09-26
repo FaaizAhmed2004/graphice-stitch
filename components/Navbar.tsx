@@ -16,6 +16,7 @@ const NAV_ITEMS = [
       { label: "Custom Patches",       href: "/patch-digitizing" },
     ],
   },
+  { label: "Our Works",      href: "/works"          },
   { label: "Pricing",        href: "/pricing"        },
   // { label: "Blog",           href: "/blog"           },
   { label: "About",          href: "/about"          },
@@ -154,6 +155,7 @@ export default function Navbar() {
           <div className="my-2 h-px bg-gray-100 dark:bg-gray-800" />
           {[
             { label: "Pricing",        href: "/pricing"        },
+            { label: "Our Works",      href: "/works"          },
             { label: "Blog",           href: "/blog"           },
             { label: "About",          href: "/about"          },
             { label: "Contact",        href: "/contact"        },
