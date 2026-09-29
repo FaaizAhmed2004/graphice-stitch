@@ -7,7 +7,7 @@ import { SERVICES } from "@/lib/constants";
 const serviceImages = [
   "/Left chest TEDDEY.JPG",        // Left Chest Digitizing
   "/RAIDERS hat.JPG",              // Cap / Hat Digitizing
-  "/Halos.JPG",                    // 3D Puff Embroidery — cap/hat with raised design
+  "/RAIDERS hat.JPG",              // 3D Puff Embroidery — cap/hat with raised design
   "/MARATHON JB sweatshirts.JPG",  // Full Back / Jacket
   "/Cowboys Champions Vector Art R1.jpg", // Vector Art Conversion
   "/Vintage_Cutting.jpg",          // Patch Digitizing

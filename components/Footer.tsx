@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Clock } from "lucide-react";
-import { SITE_NAME, CONTACT_EMAIL, CONTACT_LOCATION, BUSINESS_HOURS } from "@/lib/constants";
+import { Mail, Clock } from "lucide-react";
+import { SITE_NAME, CONTACT_EMAIL, BUSINESS_HOURS } from "@/lib/constants";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -50,11 +50,11 @@ export default function Footer() {
 https://www.instagram.com/graphic_stitch.co?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" aria-label="Instagram" className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
-              <a href="s://www.facebook.com/share/1Bn91wAJzZ/?mibextid=wwXIfr" aria-label="Facebook" className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
+              <a href="https://www.facebook.com/profile.php?id=61591458807250" aria-label="Facebook" className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
               </a>
-              <a href="#" aria-label="YouTube" className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+              <a href="https://www.linkedin.com/" aria-label="LinkedIn" className="w-8 h-8 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg>
               </a>
             </div>
           </div>
@@ -63,14 +63,11 @@ https://www.instagram.com/graphic_stitch.co?utm_source=ig_web_button_share_sheet
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Embroidery Digitizing Service", href: "/embroidery-digitizing" },
-                { label: "Vector Art Service", href: "/vector-art" },
-                { label: "Our Pricing", href: "/pricing" },
-                { label: "Custom Patches", href: "/embroidery-digitizing" },
-                { label: "Our Works", href: "/works" },
-                { label: "Sample Designs", href: "/sample-designs" },
-                { label: "Blog / Resources", href: "/blog" },
+                { label: "Home", href: "/" },
                 { label: "About Us", href: "/about" },
+                { label: "Gallery", href: "/works" },
+                { label: "Pricing", href: "/pricing" },
+                { label: "FAQ's", href: "/embroidery-digitizing#faq" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link
@@ -89,12 +86,9 @@ https://www.instagram.com/graphic_stitch.co?utm_source=ig_web_button_share_sheet
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-4">Services</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "Left Chest Digitizing", href: "/embroidery-digitizing" },
-                { label: "Cap / Hat Digitizing", href: "/embroidery-digitizing" },
-                { label: "3D Puff Embroidery", href: "/embroidery-digitizing" },
-                { label: "Full Back Digitizing", href: "/embroidery-digitizing" },
-                { label: "Vector Art Conversion", href: "/vector-art" },
-                { label: "Patch Digitizing", href: "/embroidery-digitizing" },
+                { label: "Digitizing", href: "/embroidery-digitizing" },
+                { label: "Vector Art", href: "/vector-art" },
+                { label: "Custom Patches", href: "/patch-digitizing" },
               ].map((s) => (
                 <li key={s.label}>
                   <Link
@@ -117,10 +111,6 @@ https://www.instagram.com/graphic_stitch.co?utm_source=ig_web_button_share_sheet
                   <Mail className="w-4 h-4 text-gray-300 mt-0.5 shrink-0" />
                   <span className="text-sm text-gray-500 group-hover:text-white transition-colors break-all">{CONTACT_EMAIL}</span>
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-gray-300 mt-0.5 shrink-0" />
-                <span className="text-sm text-gray-500">{CONTACT_LOCATION}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 text-gray-300 mt-0.5 shrink-0" />

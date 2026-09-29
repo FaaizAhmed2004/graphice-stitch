@@ -29,7 +29,10 @@ const SPECIALTIES = [
 export default function Portfolio({ items, showViewAll = false }: Props) {
   const portfolioItems: PortfolioItem[] = items?.length
     ? items.filter((item) => item.image_url).map((item) => ({
-        id: item.id, title: item.title, category: item.category, image: item.image_url as string,
+        id: item.id,
+        title: item.title,
+        category: item.category,
+        image: item.category.toLowerCase().includes("3d puff") ? "/RAIDERS hat.JPG" : item.image_url as string,
       }))
     : PORTFOLIO_ITEMS;
 

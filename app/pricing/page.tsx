@@ -1,28 +1,26 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import ContactForm from "@/components/ContactForm";
-import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { Check, ArrowRight, Clock, RefreshCw, ShieldCheck } from "lucide-react";
-import ManagedServicesPricing from "@/components/ManagedServicesPricing";
 
 export const metadata: Metadata = {
   title: "Pricing — Graphic Stitch",
   description:
-    "Transparent pricing for embroidery digitizing and vector art. Left chest from $15, 3D Puff from $25, Full Back from $65. No hidden fees.",
+    "Transparent flat-rate pricing for embroidery digitizing, custom contracts, and vector art. No hidden fees.",
 };
 
-export const dynamic = "force-dynamic";
-
 const EMBROIDERY_PRICING = [
-  { name: "Left Chest", price: "$15", note: "With artwork ready for embroidery", popular: false },
-  { name: "Left Chest + Cap", price: "$20", note: "With artwork ready for embroidery", popular: true },
-  { name: "3D Puff", price: "$25", note: "Foam puff technique included", popular: false },
-  { name: "Full Back / Jacket", price: "$65", note: "Large scale designs", popular: false },
+  { name: "STANDARD Digitizing", details: ["Flat Rates (Unlimited Stitches)", "Leftchest Designs $10", "Caps Designs $10", "Hats Designs $10"] },
+  { name: "3D Puff & Applique DIGITIZING", details: ["Flat Rates (Unlimited Stitches)", "Leftchest Designs $12", "Caps Designs $12", "JacketBacks $20"], highlighted: true },
+  { name: "JacketBack DIGITIZING", details: ["$25 to $30 Flat for any kind of JacketBack Image Digitizing"] },
+  { name: "Special Monthly Contract", details: ["Silver $400 (50 Leftchests & 10 Jacketbacks)", "Gold $700 (30 Leftchests & 15 Jacketbacks)", "Diamond $900 (50 Leftchests & 30 Jacketbacks)", "Platinum $1800 (Your Personal Designer, Unlimited Leftchests and Jacketbacks)"] },
 ];
 
 const VECTOR_PRICING = [
-  { name: "Simple Artwork", price: "$15", note: "Basic logos, 1–3 colors, clean shapes", popular: false },
-  { name: "Complex Artwork", price: "$20", note: "Detailed illustrations, many colors", popular: true },
+  { name: "Regular Vectors", details: ["$10 Flat (Simple Vectors)"] },
+  { name: "Standard Vectors", details: ["$15 Flat (DTF, DTG, Separations)"], highlighted: true },
+  { name: "Complex Vectors", details: ["$25 Flat (Halftone, Detailed Images, Engraving)"] },
+  { name: "Special Monthly Contract", details: ["Silver $400", "Gold $700", "Diamond $900", "Platinum $1800 (Your Personal Designer, Unlimited Vector Designs Any Type)"] },
 ];
 
 const WHY_US = [
@@ -32,80 +30,25 @@ const WHY_US = [
   { icon: <Check className="w-5 h-5" />, title: "All Formats Included", desc: "Get your file in every format — no extra charge." },
 ];
 
-function readManagedPricing(body: string | undefined) {
-  if (!body) return null;
-  const rows = body.split("\n").map((line) => line.trim()).filter(Boolean).map((line) => {
-    const [group, name, price, note, popular] = line.split("|").map((part) => part.trim());
-    return { group, name, price, note, popular: popular === "true" };
-  }).filter((row) => row.group && row.name && row.price && row.note);
-  if (!rows.length) return null;
-  return {
-    embroidery: rows.filter((row) => row.group.toLowerCase() === "embroidery"),
-    vector: rows.filter((row) => row.group.toLowerCase() === "vector"),
-  };
+function PricingCards({ items }: { items: { name: string; details: string[]; highlighted?: boolean }[] }) {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      {items.map((item) => (
+        <article key={item.name} className={`flex flex-col rounded-2xl border p-7 text-center ${item.highlighted ? "border-[#d9ff53] bg-[#171717] text-white shadow-xl shadow-black/20" : "border-gray-100 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"}`}>
+          <h3 className={`mb-4 font-bold ${item.highlighted ? "text-white" : "text-gray-900 dark:text-white"}`}>{item.name}</h3>
+          <div className={`flex flex-1 flex-col justify-center gap-3 text-sm leading-relaxed ${item.highlighted ? "text-white/75" : "text-gray-600 dark:text-gray-300"}`}>
+            {item.details.map((detail) => <p key={detail}>{detail}</p>)}
+          </div>
+          <a href="/quote" className={`mt-6 inline-flex items-center justify-center gap-1 text-sm font-semibold transition-colors ${item.highlighted ? "text-[#d9ff53] hover:text-white" : "text-[#587500] hover:text-black dark:text-[#d9ff53] dark:hover:text-white"}`}>
+            Order Now <ArrowRight className="h-3.5 w-3.5" />
+          </a>
+        </article>
+      ))}
+    </div>
+  );
 }
 
-export default async function PricingPage() {
-  const supabase = await getSupabaseServerClient();
-  const [{ data: managedPage }, { data: plans }, { data: services }] = await Promise.all([
-    supabase.from("cms_pages").select("title, content, published").eq("slug", "pricing").eq("published", true).maybeSingle(),
-    supabase.from("pricing_plans").select("name, price, description, featured, service_id").eq("active", true).order("sort_order"),
-    supabase.from("services").select("id, name, category, starting_price, delivery_time").eq("published", true).order("sort_order"),
-  ]);
-  const managedPricing = readManagedPricing(managedPage?.content?.body);
-
-  // Build a map of service id → full service row
-  const serviceMap = new Map((services || []).map((s) => [s.id, s]));
-
-  // Pricing plans from DB — price comes from pricing_plans.price
-  const databasePricing = (plans || []).map((plan) => {
-    const svc = serviceMap.get(plan.service_id || "");
-    return {
-      name: plan.name,
-      price: `$${plan.price}`,
-      note: plan.description || "Professional production service",
-      popular: plan.featured,
-      category: svc?.category,
-    };
-  });
-
-  // Starting-price cards from services table — these drive the yellow badge
-  // Use services.starting_price so admin changes reflect immediately
-  const embroideryServices = (services || []).filter((s) => s.category === "embroidery");
-  const vectorServices = (services || []).filter((s) => s.category === "vector");
-
-  const serviceEmbroideryPricing = embroideryServices.map((s) => ({
-    name: s.name,
-    price: s.starting_price != null ? `$${s.starting_price}` : "Quote",
-    note: s.delivery_time ? `Delivery: ${s.delivery_time}` : "Professional production service",
-    popular: false,
-  }));
-  const serviceVectorPricing = vectorServices.map((s) => ({
-    name: s.name,
-    price: s.starting_price != null ? `$${s.starting_price}` : "Quote",
-    note: s.delivery_time ? `Delivery: ${s.delivery_time}` : "Professional production service",
-    popular: false,
-  }));
-
-  // Priority: DB pricing_plans → services.starting_price → CMS → hardcoded
-  const planEmbroidery = databasePricing.filter((i) => i.category === "embroidery").map((i) => ({ name: i.name, price: i.price, note: i.note, popular: i.popular }));
-  const planVector = databasePricing.filter((i) => i.category === "vector").map((i) => ({ name: i.name, price: i.price, note: i.note, popular: i.popular }));
-
-  const finalEmbroideryPricing = planEmbroidery.length
-    ? planEmbroidery
-    : serviceEmbroideryPricing.length
-      ? serviceEmbroideryPricing
-      : managedPricing?.embroidery.length
-        ? managedPricing.embroidery
-        : EMBROIDERY_PRICING;
-
-  const finalVectorPricing = planVector.length
-    ? planVector
-    : serviceVectorPricing.length
-      ? serviceVectorPricing
-      : managedPricing?.vector.length
-        ? managedPricing.vector
-        : VECTOR_PRICING;
+export default function PricingPage() {
   return (
     <PageLayout>
       {/* Hero */}
@@ -126,7 +69,7 @@ export default async function PricingPage() {
           </h1>
           <p className="text-white/65 text-lg max-w-xl mx-auto">
             High quality. Low cost. No hidden fees. We can meet your budget
-            at $15 per design or go more elaborate — your choice.
+            at $10 per design or go more elaborate — your choice.
           </p>
         </div>
       </section>
@@ -144,46 +87,9 @@ export default async function PricingPage() {
               <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
                 Embroidery Digitizing Prices
               </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Fast Next-Day Service Turnaround</p>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Same day turnaround</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-              {finalEmbroideryPricing.map((item) => (
-                <div
-                  key={item.name}
-                  className={`relative rounded-2xl p-7 text-center border transition-all ${
-                    item.popular
-                      ? "bg-[#171717] text-white border-[#d9ff53] shadow-2xl shadow-black/20 scale-105"
-                      : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
-                  }`}
-                >
-                  {item.popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#d9ff53] text-[#171717] text-xs font-bold px-3 py-1 rounded-full shadow">
-                      Most Popular
-                    </span>
-                  )}
-                  <h3 className={`font-bold text-sm mb-4 ${item.popular ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
-                    {item.name}
-                  </h3>
-                  <div className={`text-4xl font-black mb-3 ${item.popular ? "text-white" : "gradient-text"}`}>
-                    {item.price}
-                  </div>
-                  <p className={`text-xs leading-relaxed ${item.popular ? "text-white/65" : "text-gray-400"}`}>
-                    {item.note}
-                  </p>
-                  <a
-                    href="#contact"
-                    className={`mt-5 inline-flex items-center gap-1 text-xs font-semibold ${
-                      item.popular ? "text-[#d9ff53] hover:text-white" : "text-[#587500] dark:text-[#d9ff53] hover:text-black"
-                    } transition-colors`}
-                  >
-                    Get Quote <ArrowRight className="w-3 h-3" />
-                  </a>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-gray-400 text-xs mt-5">
-              * Starting prices. Final cost depends on complexity. Formats: DST, PES, EMB, XXX, HUS, VIP, VP3, JEF, EXP and more.
-            </p>
+            <PricingCards items={EMBROIDERY_PRICING} />
           </div>
 
           {/* Vector */}
@@ -193,37 +99,10 @@ export default async function PricingPage() {
                 Vector Art
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">
-                Vector Art Conversion Prices
+                Vector Prices
               </h2>
             </div>
-            <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-              {finalVectorPricing.map((item) => (
-                <div
-                  key={item.name}
-                  className={`rounded-2xl p-8 text-center border ${
-                    item.popular
-                      ? "bg-[#171717] text-white border-[#d9ff53] shadow-xl shadow-black/20"
-                      : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
-                  }`}
-                >
-                  {item.popular && (
-                    <span className="text-xs font-bold bg-white/20 px-3 py-1 rounded-full block mb-3">Most Common</span>
-                  )}
-                  <h3 className={`font-bold mb-3 ${item.popular ? "text-white" : "text-gray-900 dark:text-white"}`}>
-                    {item.name}
-                  </h3>
-                  <div className={`text-4xl font-black mb-2 ${item.popular ? "text-white" : "gradient-text"}`}>
-                    {item.price}
-                  </div>
-                  <p className={`text-sm ${item.popular ? "text-white/65" : "text-gray-500 dark:text-gray-400"}`}>
-                    {item.note}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-gray-400 text-xs mt-5">
-              * Formats delivered: AI, EPS, SVG, PDF, JPG, PNG. CDR (Corel Draw) on request. We convert existing art — not original creation.
-            </p>
+            <PricingCards items={VECTOR_PRICING} />
           </div>
 
           {/* Why us */}
@@ -240,8 +119,6 @@ export default async function PricingPage() {
           </div>
         </div>
       </section>
-
-      <ManagedServicesPricing title="Services & Order Pricing" description="Explore every published service, compare its available plans, and place your order after signing in." />
 
       {/* Patch service banner */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
